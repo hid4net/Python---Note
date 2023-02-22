@@ -1,9 +1,9 @@
 
-**Python 总结: 数据科学 - 数据存储**
+<h1 style="text-align:center">数据科学 - 数据存储</h1>
+
 --------------------------------------------------------------------------------
 [返回目录](outline.md)
 
---------------------------------------------------------------------------------
 tips:
 * HDF5 存储数据非常快
 * ==HDF5 用于存数据, 而非处理数据, 尽量不要直接操作数据==
@@ -18,22 +18,22 @@ tips:
 
 <!-- code_chunk_output -->
 
-- [1. CSV](#1-csv)
-  - [1.1. with Pandas](#11-with-pandas)
-  - [1.2. with Numpy](#12-with-numpy)
-- [2. Excel](#2-excel)
-  - [2.1. with Pandas](#21-with-pandas)
-- [3. HDF5](#3-hdf5)
-  - [3.1. HDF5 数据结构](#31-hdf5-数据结构)
-  - [3.2. with Pandas](#32-with-pandas)
-    - [3.2.1. 基本操作](#321-基本操作)
-    - [3.2.2. HDFStore 对象](#322-hdfstore-对象)
-  - [3.3. h5py (interface with numpy)](#33-h5py-interface-with-numpy)
-    - [3.3.1. 基本操作](#331-基本操作)
-    - [3.3.2. 文件对象](#332-文件对象)
-    - [3.3.3. group对象](#333-group对象)
-    - [3.3.4. dataset对象](#334-dataset对象)
-  - [3.4. pytables](#34-pytables)
+- [1. CSV](#-1-csv-)
+  - [1.1. with Pandas](#-11-with-pandas-)
+  - [1.2. with Numpy](#-12-with-numpy-)
+- [2. Excel](#-2-excel-)
+  - [2.1. with Pandas](#-21-with-pandas-)
+- [3. HDF5](#-3-hdf5-)
+  - [3.1. HDF5 数据结构](#-31-hdf5-数据结构-)
+  - [3.2. with Pandas](#-32-with-pandas-)
+    - [3.2.1. 基本操作](#-321-基本操作-)
+    - [3.2.2. HDFStore 对象](#-322-hdfstore-对象-)
+  - [3.3. h5py (interface with numpy)](#-33-h5py-interface-with-numpy-)
+    - [3.3.1. 基本操作](#-331-基本操作-)
+    - [3.3.2. 文件对象](#-332-文件对象-)
+    - [3.3.3. group对象](#-333-group对象-)
+    - [3.3.4. dataset对象](#-334-dataset对象-)
+  - [3.4. pytables](#-34-pytables-)
 
 <!-- /code_chunk_output -->
 

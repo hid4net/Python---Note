@@ -1,9 +1,9 @@
 
-0.1. **Python 总结: 调试与开发**
+<h1 style="text-align:center">调试与开发</h1>
+
 --------------------------------------------------------------------------------
 [返回目录](outline.md)
 
---------------------------------------------------------------------------------
 tips:
 
 --------------------------------------------------------------------------------
@@ -12,38 +12,38 @@ tips:
 
 <!-- code_chunk_output -->
 
-- [1. Runtime 信息](#1-runtime-信息)
-  - [1.1. 标准库 sys](#11-标准库-sys)
-- [2. 日志 (标准库 logging)](#2-日志-标准库-logging)
-  - [2.1. 基本](#21-基本)
-  - [2.2. 重要: 解决 logger 重复打印的问题](#22-重要-解决-logger-重复打印的问题)
-  - [2.3. 面向对象方法](#23-面向对象方法)
-    - [2.3.1. 基本流程](#231-基本流程)
-    - [2.3.2. 主要的 class](#232-主要的-class)
-    - [2.3.3. class: Logger](#233-class-logger)
-    - [2.3.4. class: Filterer](#234-class-filterer)
-    - [2.3.5. class: Handler](#235-class-handler)
-    - [2.3.6. class: Formatter](#236-class-formatter)
-  - [2.4. 函数方法](#24-函数方法)
-  - [2.5. 高级技巧](#25-高级技巧)
-- [3. 运行时间测量](#3-运行时间测量)
-  - [3.1. 标准库 time](#31-标准库-time)
-  - [3.2. 标准库 timeit](#32-标准库-timeit)
-  - [3.3. 使用解释器](#33-使用解释器)
-- [4. Profile](#4-profile)
-  - [4.1. 标准库 cProfile, profile](#41-标准库-cprofile-profile)
-  - [4.2. 第三方库 line_profiler](#42-第三方库-line_profiler)
-- [5. numba](#5-numba)
-  - [5.1. wrapper](#51-wrapper)
-  - [5.2. @jit](#52-jit)
-- [6. cython](#6-cython)
-- [7. 反汇编](#7-反汇编)
-  - [7.1. 标准库 dis](#71-标准库-dis)
-- [8. 运行环境](#8-运行环境)
-  - [8.1. Virtualenv](#81-virtualenv)
-  - [8.2. Virtualenvwrapper](#82-virtualenvwrapper)
-- [9. 生成可执行文件](#9-生成可执行文件)
-  - [9.1. PyInstaller](#91-pyinstaller)
+- [1. Runtime 信息](#-1-runtime-信息-)
+  - [1.1. 标准库 sys](#-11-标准库-sys-)
+- [2. 日志 (标准库 logging)](#-2-日志-标准库-logging-)
+  - [2.1. 基本](#-21-基本-)
+  - [2.2. 重要: 解决 logger 重复打印的问题](#-22-重要-解决-logger-重复打印的问题-)
+  - [2.3. 面向对象方法](#-23-面向对象方法-)
+    - [2.3.1. 基本流程](#-231-基本流程-)
+    - [2.3.2. 主要的 class](#-232-主要的-class-)
+    - [2.3.3. class: Logger](#-233-class-logger-)
+    - [2.3.4. class: Filterer](#-234-class-filterer-)
+    - [2.3.5. class: Handler](#-235-class-handler-)
+    - [2.3.6. class: Formatter](#-236-class-formatter-)
+  - [2.4. 函数方法](#-24-函数方法-)
+  - [2.5. 高级技巧](#-25-高级技巧-)
+- [3. 运行时间测量](#-3-运行时间测量-)
+  - [3.1. 标准库 time](#-31-标准库-time-)
+  - [3.2. 标准库 timeit](#-32-标准库-timeit-)
+  - [3.3. 使用解释器](#-33-使用解释器-)
+- [4. Profile](#-4-profile-)
+  - [4.1. 标准库 cProfile, profile](#-41-标准库-cprofile-profile-)
+  - [4.2. 第三方库 line_profiler](#-42-第三方库-line_profiler-)
+- [5. numba](#-5-numba-)
+  - [5.1. wrapper](#-51-wrapper-)
+  - [5.2. @jit](#-52-jit-)
+- [6. cython](#-6-cython-)
+- [7. 反汇编](#-7-反汇编-)
+  - [7.1. 标准库 dis](#-71-标准库-dis-)
+- [8. 运行环境](#-8-运行环境-)
+  - [8.1. Virtualenv](#-81-virtualenv-)
+  - [8.2. Virtualenvwrapper](#-82-virtualenvwrapper-)
+- [9. 生成可执行文件](#-9-生成可执行文件-)
+  - [9.1. PyInstaller](#-91-pyinstaller-)
 
 <!-- /code_chunk_output -->
 

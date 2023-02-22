@@ -1,9 +1,9 @@
 
-**Python 总结: 数据类型和结构**
+<h1 style="text-align:center">数据类型和结构</h1>
+
 --------------------------------------------------------------------------------
 [返回目录](outline.md)
 
---------------------------------------------------------------------------------
 tips:
 
 --------------------------------------------------------------------------------
@@ -12,17 +12,17 @@ tips:
 
 <!-- code_chunk_output -->
 
-- [1. Python 数据类型的抽象基类](#1-python-数据类型的抽象基类)
-  - [1.1. 标准库 collections.abc](#11-标准库-collectionsabc)
-  - [1.2. 标准库 numbers](#12-标准库-numbers)
-- [2. 标准库 collections 的数据类型](#2-标准库-collections-的数据类型)
-  - [2.1. deque](#21-deque)
-- [3. 队列](#3-队列)
-  - [3.1. 内建类型 list](#31-内建类型-list)
-  - [3.2. 标准库 collections](#32-标准库-collections)
-- [4. stack](#4-stack)
-  - [4.1. 内建类型 list](#41-内建类型-list)
-  - [4.2. 标准库 collections](#42-标准库-collections)
+- [1. Python 数据类型的抽象基类](#-1-python-数据类型的抽象基类-)
+  - [1.1. 标准库 collections.abc](#-11-标准库-collectionsabc-)
+  - [1.2. 标准库 numbers](#-12-标准库-numbers-)
+- [2. 标准库 collections 的数据类型](#-2-标准库-collections-的数据类型-)
+  - [2.1. deque](#-21-deque-)
+- [3. 队列](#-3-队列-)
+  - [3.1. 内建类型 list](#-31-内建类型-list-)
+  - [3.2. 标准库 collections](#-32-标准库-collections-)
+- [4. stack](#-4-stack-)
+  - [4.1. 内建类型 list](#-41-内建类型-list-)
+  - [4.2. 标准库 collections](#-42-标准库-collections-)
 
 <!-- /code_chunk_output -->
 

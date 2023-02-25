@@ -13,14 +13,12 @@ tips:
 <!-- code_chunk_output -->
 
 - [1. 路径](#-1-路径-)
-  - [1.1. 基本操作](#-11-基本操作-)
-    - [1.1.1. 路径操作](#-111-路径操作-)
-    - [1.1.2. 目录操作](#-112-目录操作-)
-    - [1.1.3. 文件操作](#-113-文件操作-)
-    - [1.1.4. 遍历文件](#-114-遍历文件-)
-    - [1.1.5. 信息判断](#-115-信息判断-)
-  - [1.2. 应用实例](#-12-应用实例-)
-    - [1.2.1. pyinstaller 打包 exe 后的路径问题](#-121-pyinstaller-打包-exe-后的路径问题-)
+  - [1.1. 路径管理](#-11-路径管理-)
+  - [1.2. 目录管理](#-12-目录管理-)
+  - [1.3. 文件管理](#-13-文件管理-)
+  - [1.4. 信息判断](#-14-信息判断-)
+  - [1.5. 应用实例](#-15-应用实例-)
+    - [1.5.1. pyinstaller 打包 exe 后的路径问题](#-151-pyinstaller-打包-exe-后的路径问题-)
 - [2. 普通文件](#-2-普通文件-)
 - [3. json](#-3-json-)
 - [4. yaml](#-4-yaml-)
@@ -48,9 +46,7 @@ tips:
     import os.path
     ```
 
-## 1.1. 基本操作
-
-### 1.1.1. 路径操作
+## 1.1. 路径管理
 * 创建路径
     * 直接使用 `pathlib` 中 `Path` 类的构造函数, 如
         ```Python
@@ -64,12 +60,6 @@ tips:
         p = Path.home().joinpath("dir2", "tmp.txt") # WindowsPath('C:/Users/xxx/dir2/tmp.txt')
         ```
 * 获取路径
-    * 获取路径: `pathlib` 中 `Path` 的类方法
-        ```Python
-        from pathlib import Path
-        fpath = Path.cwd()  # 获取当前路径
-        fpath = Path.home() # 获取 home 路径
-        ```
     * 选择路径: PySimpleGUI 中的对话框, 如
         ```Python
         import PySimpleGUI as sg
@@ -77,6 +67,24 @@ tips:
         filename = sg.popup_get_file()      # 返回 str
         foldername = sg.popup_get_folder()  # 返回 str
         ```
+    * 获取特定路径: `pathlib` 中 `Path` 的类方法
+        ```Python
+        from pathlib import Path
+        fpath = Path.cwd()  # 获取当前路径
+        fpath = Path.home() # 获取 home 路径
+        ```
+    * 获取路径列表
+        * 使用 pathlib 中 `Path_对象.glob(pattern)` 或 `Path_对象.rglob(pattern)`
+            ```Python
+            p.glob('*.py')      # 遍历本级目录
+            p.glob('*/*.py')    # 遍历子目录
+            p.glob('**/*.py')   # 遍历本级目录及子目录
+            p.rglob('*.py')     # 等效于 p.glob('**/*.py')
+            ```
+        * 使用 pathlib 中 `Path_对象.iterdir() -> 生成器`, 注意: 仅遍历本级目录
+            * 列举子目录或文件: `list(p.iterdir())`
+            * 列举子目录:  `[x for x in p.iterdir() if x.is_dir()]`
+            * 列举目录下所有文件:  `[x for x in p.iterdir() if x.is_file()]`
 * 路径转换
     * 绝对路径: pathlib `Path_对象.absolute()`, 如
         ```Python
@@ -95,7 +103,7 @@ tips:
     * 替换文件名: pathlib 中 `Path_对象.with_stem(stem)`
     * 替换文件后缀: pathlib 中 `Path_对象.with_suffix(suffix)`
 
-### 1.1.2. 目录操作
+## 1.2. 目录管理
 * 创建
     * pathlib 中 `Path_对象.mkdir(mode=0o777, parents=False, exist_ok=False)`
     * os 模块中的函数 `makedirs(name, mode=511, exist_ok=False)` 创建多级目录
@@ -103,17 +111,9 @@ tips:
     * pathlib 中 `Path_对象.rmdir()`
     * os 模块中的函数 `removedirs(name)` 递归删除目录
 
-### 1.1.3. 文件操作
+## 1.3. 文件管理
 * 创建: pathlib 中 `Path_对象.touch(mode=0o666, exist_ok=True)`
 * 删除: pathlib 中 `Path_对象.unlink(missing_ok=False)`
-* 重命名:
-    * pathlib 中 `Path_对象.rename(target)`, 当文件已存在时，无法创建该文件
-    * pathlib 中 `Path_对象.replace(target)`, 强制重命名
-* 复制文件: `shutil` 中的函数 `copy/copy2/copyfile/copytree(..)`
-* 文件信息:
-    * pathlib `Path_对象.stat()`, 提供文件的大小、创建时间等信息
-        * 返回 `os.stat_result(st_mode=xxx, st_ino=xxx, st_dev=xxx, st_nlink=x, st_uid=x, st_gid=x, st_size=xxx, st_atime=xxx, st_mtime=xxx, st_ctime=xxx)`
-    * pathlib `Path_对象.lstat()`, 与 `stat` 类似, 用于文件链接
 * 打开文件:
     * 内建函数 `open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)`
     * pathlib 中 `Path_对象.open(mode='r', buffering=-1, encoding=None, errors=None, newline=None)`
@@ -123,6 +123,14 @@ tips:
     * pathlib 中 `Path_对象.read_text(encoding=None, errors=None)`
     * pathlib 中 `Path_对象.write_bytes(data)`
     * pathlib 中 `Path_对象.write_text(data, encoding=None, errors=None, newline=None)`
+* 复制文件: `shutil` 中的函数 `copy/copy2/copyfile/copytree(..)`
+* 移动/重命名:
+    * pathlib 中 `Path_对象.rename(target)`, 当文件已存在时，无法创建该文件
+    * pathlib 中 `Path_对象.replace(target)`, 强制重命名
+* 文件信息:
+    * pathlib `Path_对象.stat()`, 提供文件的大小、创建时间等信息
+        * 返回 `os.stat_result(st_mode=xxx, st_ino=xxx, st_dev=xxx, st_nlink=x, st_uid=x, st_gid=x, st_size=xxx, st_atime=xxx, st_mtime=xxx, st_ctime=xxx)`
+    * pathlib `Path_对象.lstat()`, 与 `stat` 类似, 用于文件链接
 * 更改权限:
     * pathlib 中 `Path_对象.chmod(mode, *, follow_symlinks=True)`
     * pathlib 中 `Path_对象.lchmod(mode)`
@@ -135,20 +143,7 @@ tips:
     * 文件所有者: pathlib 中 `Path_对象.owner()`
     * 文件组: pathlib 中 `Path_对象.group()`
 
-### 1.1.4. 遍历文件
-* 使用 pathlib 中 `Path_对象.glob(pattern)` 或 `Path_对象.rglob(pattern)`
-    ```Python
-    p.glob('*.py')      # 遍历本级目录
-    p.glob('*/*.py')    # 遍历子目录
-    p.glob('**/*.py')   # 遍历本级目录及子目录
-    p.rglob('*.py')     # 等效于 p.glob('**/*.py')
-    ```
-* 使用 pathlib 中 `Path_对象.iterdir() -> 生成器`, 注意: 仅遍历本级目录
-    * 列举子目录或文件: `list(p.iterdir())`
-    * 列举子目录:  `[x for x in p.iterdir() if x.is_dir()]`
-    * 列举目录下所有文件:  `[x for x in p.iterdir() if x.is_file()]`
-
-### 1.1.5. 信息判断
+## 1.4. 信息判断
 * 常用
     * 是否存在: pathlib `Path_对象.exists()`
     * 是否为目录: pathlib `Path_对象.is_dir()`
@@ -163,9 +158,9 @@ tips:
     * 是否为 socket: pathlib `Path_对象.is_socket()`
     * 是否为相同文件: pathlib `Path_对象.samefile(other_path)`
 
-## 1.2. 应用实例
+## 1.5. 应用实例
 
-### 1.2.1. pyinstaller 打包 exe 后的路径问题
+### 1.5.1. pyinstaller 打包 exe 后的路径问题
 * 测试代码
     ```Python
     import os
@@ -190,31 +185,31 @@ tips:
     ```
 * 打包后在 exe 所在目录运行
     ```shell
-    sys.path[0] = 'C:\\Users\\hwaig\\AppData\\Local\\Temp\\_MEI27122\\base_library.zip'
+    sys.path[0] = 'C:\\Users\\用户名\\AppData\\Local\\Temp\\_MEI27122\\base_library.zip'
     sys.argv[0] = 'tmp.exe'
     os.path.realpath(sys.argv[0]) = 'D:\\Work\\VSCode_Ext_Dev\\Prj_hdl\\prj_hyhdl\\src\\documentation\\_temp_debug\\dist\\tmp.exe'
     Path(sys.argv[0]).absolute() = WindowsPath('D:/Work/VSCode_Ext_Dev/Prj_hdl/prj_hyhdl/src/documentation/_temp_debug/dist/tmp.exe')
     Path.cwd() = WindowsPath('D:/Work/VSCode_Ext_Dev/Prj_hdl/prj_hyhdl/src/documentation/_temp_debug/dist')
     os.getcwd() = 'D:\\Work\\VSCode_Ext_Dev\\Prj_hdl\\prj_hyhdl\\src\\documentation\\_temp_debug\\dist'
-    __file__ = 'C:\\Users\\hwaig\\AppData\\Local\\Temp\\_MEI27122\\tmp.py'
-    os.path.abspath(__file__) = 'C:\\Users\\hwaig\\AppData\\Local\\Temp\\_MEI27122\\tmp.py'
-    os.path.realpath(__file__) = 'C:\\Users\\hwaig\\AppData\\Local\\Temp\\_MEI27122\\tmp.py'
-    os.path.dirname(os.path.realpath(__file__)) = 'C:\\Users\\hwaig\\AppData\\Local\\Temp\\_MEI27122'
+    __file__ = 'C:\\Users\\用户名\\AppData\\Local\\Temp\\_MEI27122\\tmp.py'
+    os.path.abspath(__file__) = 'C:\\Users\\用户名\\AppData\\Local\\Temp\\_MEI27122\\tmp.py'
+    os.path.realpath(__file__) = 'C:\\Users\\用户名\\AppData\\Local\\Temp\\_MEI27122\\tmp.py'
+    os.path.dirname(os.path.realpath(__file__)) = 'C:\\Users\\用户名\\AppData\\Local\\Temp\\_MEI27122'
     os.path.dirname(sys.executable) = 'D:\\Work\\VSCode_Ext_Dev\\Prj_hdl\\prj_hyhdl\\src\\documentation\\_temp_debug\\dist'
     ```
     * exe 会将必要文件解压到临时文件后, 开始运行
 * 在任意路径运行 exe (如 `C:`)
     ```shell
-    sys.path[0] = 'C:\\Users\\hwaig\\AppData\\Local\\Temp\\_MEI20922\\base_library.zip'
+    sys.path[0] = 'C:\\Users\\用户名\\AppData\\Local\\Temp\\_MEI20922\\base_library.zip'
     sys.argv[0] = 'D:\\Work\\VSCode_Ext_Dev\\Prj_hdl\\prj_hyhdl\\src\\documentation\\_temp_debug\\dist\\tmp.exe'
     os.path.realpath(sys.argv[0]) = 'D:\\Work\\VSCode_Ext_Dev\\Prj_hdl\\prj_hyhdl\\src\\documentation\\_temp_debug\\dist\\tmp.exe'
     Path(sys.argv[0]).absolute() = WindowsPath('D:/Work/VSCode_Ext_Dev/Prj_hdl/prj_hyhdl/src/documentation/_temp_debug/dist/tmp.exe')
     Path.cwd() = WindowsPath('C:/')
     os.getcwd() = 'C:\\'
-    __file__ = 'C:\\Users\\hwaig\\AppData\\Local\\Temp\\_MEI20922\\tmp.py'
-    os.path.abspath(__file__) = 'C:\\Users\\hwaig\\AppData\\Local\\Temp\\_MEI20922\\tmp.py'
-    os.path.realpath(__file__) = 'C:\\Users\\hwaig\\AppData\\Local\\Temp\\_MEI20922\\tmp.py'
-    os.path.dirname(os.path.realpath(__file__)) = 'C:\\Users\\hwaig\\AppData\\Local\\Temp\\_MEI20922'
+    __file__ = 'C:\\Users\\用户名\\AppData\\Local\\Temp\\_MEI20922\\tmp.py'
+    os.path.abspath(__file__) = 'C:\\Users\\用户名\\AppData\\Local\\Temp\\_MEI20922\\tmp.py'
+    os.path.realpath(__file__) = 'C:\\Users\\用户名\\AppData\\Local\\Temp\\_MEI20922\\tmp.py'
+    os.path.dirname(os.path.realpath(__file__)) = 'C:\\Users\\用户名\\AppData\\Local\\Temp\\_MEI20922'
     os.path.dirname(sys.executable) = 'D:\\Work\\VSCode_Ext_Dev\\Prj_hdl\\prj_hyhdl\\src\\documentation\\_temp_debug\\dist'
     ```
 
@@ -252,6 +247,7 @@ tips:
     * 写入
         * `.write(str)`: 将字符串写入文件, 返回写入字符的长度, 需要自己加入换行
         * `.writelines(sequence)`: 将字符串列表写入文件, 需要自己加入换行
+        * `flush()`: 刷新文件缓冲区, 立即写入文件
     * 文件位置
         * `tell()`: 返回文件当前位置
         * `seek(offset,origin)`: 设置文件当前位置,
@@ -259,14 +255,12 @@ tips:
                 * =0 表示开头
                 * =1 表示当前位置
                 * =2 表示文件结尾
-    * 冲刷缓存
-        * `flush()`: 刷新文件缓冲区, 立即写入文件
     * 信息
         * `readable()`: 文件是否可读
         * `writable()`: 文件是否可可写
-        * `isatty()`: 如果文件连接到一个终端设备返回 True, 否则返回 False
+        * `isatty()`: 如果文件连接到一个终端设备返回 `True`, 否则返回 `False`
     * 其他
-        * `fileno()`: 返回一个整型的文件描述符(file descriptor FD 整型), 可以用在如os模块的read方法等一些底层操作上
+        * `fileno()`: 返回一个整型的文件描述符, 可以用在如 `os` 模块的 `read` 方法等一些底层操作上
         * `truncate(pos=None)`: 从文件的首行首字符开始截断, 截断文件为 size 个字符, 无 size 表示从当前位置截断; 截断之后后面的所有字符被删除, 其中 Widnows 系统下的换行代表2个字符大小
         * `reconfigure(..)`: 重新配置文件流
 * 主要属性

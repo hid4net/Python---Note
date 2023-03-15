@@ -12,38 +12,38 @@ tips:
 
 <!-- code_chunk_output -->
 
-- [1. 基本信息](#-1-基本信息-)
-- [2. Plotly](#-2-plotly-)
-  - [2.1. 简介](#-21-简介-)
-  - [2.2. 基本流程](#-22-基本流程-)
-  - [2.3. 详解: 图像](#-23-详解-图像-)
-    - [2.3.1. 图像对象](#-231-图像对象-)
-    - [2.3.2. 创建图像](#-232-创建图像-)
-    - [2.3.3. 创建子图](#-233-创建子图-)
-    - [2.3.4. 显示图像](#-234-显示图像-)
-    - [2.3.5. 保存图片](#-235-保存图片-)
-  - [2.4. 详解: trace](#-24-详解-trace-)
-    - [2.4.1. trace 列表](#-241-trace-列表-)
-    - [2.4.2. 添加轨迹](#-242-添加轨迹-)
-    - [2.4.3. 更新轨迹](#-243-更新轨迹-)
-    - [2.4.4. 轨迹的 marker](#-244-轨迹的-marker-)
-    - [2.4.5. 轨迹的线形](#-245-轨迹的线形-)
-  - [2.5. 详解: Layout](#-25-详解-layout-)
-    - [2.5.1. Layout 属性](#-251-layout-属性-)
-    - [2.5.2. 更新 layout](#-252-更新-layout-)
-    - [2.5.3. 图标题](#-253-图标题-)
-    - [2.5.4. 图注](#-254-图注-)
-    - [2.5.5. 图片尺寸](#-255-图片尺寸-)
-    - [2.5.6. 坐标轴](#-256-坐标轴-)
-    - [2.5.7. Color Axes](#-257-color-axes-)
-    - [2.5.8. 标注](#-258-标注-)
-    - [2.5.9. hover](#-259-hover-)
-    - [2.5.10. shape](#-2510-shape-)
-    - [2.5.11. 图片](#-2511-图片-)
-    - [2.5.12. sliders](#-2512-sliders-)
-    - [2.5.13. updatemenus](#-2513-updatemenus-)
-  - [2.6. 详解: frames](#-26-详解-frames-)
-  - [2.7. Plotly Express](#-27-plotly-express-)
+- [1. 基本信息](#1-基本信息)
+- [2. Plotly](#2-plotly)
+  - [2.1. 简介](#21-简介)
+  - [2.2. 基本流程](#22-基本流程)
+  - [2.3. 详解: 图像](#23-详解-图像)
+    - [2.3.1. 图像对象](#231-图像对象)
+    - [2.3.2. 创建图像](#232-创建图像)
+    - [2.3.3. 创建子图](#233-创建子图)
+    - [2.3.4. 显示图像](#234-显示图像)
+    - [2.3.5. 保存图片](#235-保存图片)
+  - [2.4. 详解: trace](#24-详解-trace)
+    - [2.4.1. trace 列表](#241-trace-列表)
+    - [2.4.2. 添加轨迹](#242-添加轨迹)
+    - [2.4.3. 更新轨迹](#243-更新轨迹)
+    - [2.4.4. 轨迹的 marker](#244-轨迹的-marker)
+    - [2.4.5. 轨迹的线形](#245-轨迹的线形)
+  - [2.5. 详解: Layout](#25-详解-layout)
+    - [2.5.1. Layout 属性](#251-layout-属性)
+    - [2.5.2. 更新 layout](#252-更新-layout)
+    - [2.5.3. 图标题](#253-图标题)
+    - [2.5.4. 图注](#254-图注)
+    - [2.5.5. 图片尺寸](#255-图片尺寸)
+    - [2.5.6. 坐标轴](#256-坐标轴)
+    - [2.5.7. Color Axes](#257-color-axes)
+    - [2.5.8. 标注](#258-标注)
+    - [2.5.9. hover](#259-hover)
+    - [2.5.10. shape](#2510-shape)
+    - [2.5.11. 图片](#2511-图片)
+    - [2.5.12. sliders](#2512-sliders)
+    - [2.5.13. updatemenus](#2513-updatemenus)
+  - [2.6. 详解: frames](#26-详解-frames)
+  - [2.7. Plotly Express](#27-plotly-express)
 
 <!-- /code_chunk_output -->
 
@@ -69,7 +69,7 @@ tips:
     | 子模块                                                                                      | 说明                                 | 常用导入方式                                |
     | ------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------------- |
     | [plotly.express](https://plotly.com/python-api-reference/plotly.express.html)               | 高层接口: 一次性指定 trace 和 layout | `import plotly.express as px`               |
-    | [plotly.graph_objects](https://plotly.com/python-api-reference/plotly.graph_objects.html)   | 低层接口: 分别指定 trace 和 layout   | `import plotly.graph_objects as px`         |
+    | [plotly.graph_objects](https://plotly.com/python-api-reference/plotly.graph_objects.html)   | 低层接口: 分别指定 trace 和 layout   | `import plotly.graph_objects as go`         |
     | [plotly.subplots](https://plotly.com/python-api-reference/plotly.subplots.html)             | 子图: 创建子图                       | `from plotly.subplots import make_subplots` |
     | [plotly.figure_factory](https://plotly.com/python-api-reference/plotly.figure_factory.html) | 某些复杂的图                         |
     | [plotly.io](https://plotly.com/python-api-reference/plotly.io.html)                         | 底层显示、渲染器、保存等接口         |

@@ -2,67 +2,67 @@
 <h1 style="text-align:center">PySimpleGUI</h1>
 
 --------------------------------------------------------------------------------
-[返回目录](outline.md)
-
-tips:
-* ==多看示例==
-* 参见 [官方文档](https://pysimplegui.readthedocs.io/)
---------------------------------------------------------------------------------
+[返回 Outline](outline.md)
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-- [1. 入门](#-1-入门)
-  - [1.1. 入门示例](#-11-入门示例)
-  - [1.2. 基本概念](#-12-基本概念)
-  - [1.3. 窗口的运行类型](#-13-窗口的运行类型)
-- [2. 详解: 窗口 (Window)](#-2-详解-窗口-window)
-  - [2.1. class: Window](#-21-class-window)
-  - [2.2. 创建窗口](#-22-创建窗口)
-  - [2.3. 多线程支持](#-23-多线程支持)
-  - [2.4. 其他](#-24-其他)
-- [3. 详解: 事件与事件循环](#-3-详解-事件与事件循环)
-  - [3.1. 事件](#-31-事件)
-    - [3.1.1. 窗口事件](#-311-窗口事件)
-    - [3.1.2. 按钮事件](#-312-按钮事件)
-    - [3.1.3. Element 事件](#-313-element-事件)
-  - [3.2. 事件循环](#-32-事件循环)
-    - [3.2.1. 事件处理](#-321-事件处理)
-    - [3.2.2. 事件循环与多线程](#-322-事件循环与多线程)
-- [4. 详解: 布局与容器](#-4-详解-布局与容器)
-  - [4.1. 布局](#-41-布局)
-  - [4.2. 布局相关容器或函数](#-42-布局相关容器或函数)
-- [5. 详解: Widget](#-5-详解-widget)
-  - [5.1. 基本组件](#-51-基本组件)
-  - [5.2. 组件操作](#-52-组件操作)
-    - [5.2.1. key](#-521-key)
-    - [5.2.2. 组件的通用属性和方法](#-522-组件的通用属性和方法)
-    - [5.2.3. 组件样式](#-523-组件样式)
-  - [5.3. 标题, 菜单, 状态栏](#-53-标题-菜单-状态栏)
-    - [5.3.1. 标题](#-531-标题)
-    - [5.3.2. 菜单](#-532-菜单)
-    - [5.3.3. 状态栏](#-533-状态栏)
-  - [5.4. 按钮](#-54-按钮)
-  - [5.5. 输入类控件](#-55-输入类控件)
-  - [5.6. 显示类控件](#-56-显示类控件)
-  - [5.7. 表格/树状](#-57-表格树状)
-  - [5.8. 画布](#-58-画布)
-  - [5.9. 弹出窗口](#-59-弹出窗口)
-  - [5.10. 系统托盘](#-510-系统托盘)
-  - [5.11. 其他控件](#-511-其他控件)
-  - [5.12. 打印调试信息](#-512-打印调试信息)
-- [6. 设置、定制、美化](#-6-设置-定制-美化)
-  - [6.1. 通用方法](#-61-通用方法)
-  - [6.2. 主题、颜色、字体](#-62-主题-颜色-字体)
-  - [6.3. 图标](#-63-图标)
-  - [6.4. 窗口](#-64-窗口)
-  - [6.5. 控件尺寸](#-65-控件尺寸)
-- [7. 鼠标和键盘](#-7-鼠标和键盘)
-  - [7.1. 鼠标](#-71-鼠标)
-  - [7.2. 键盘和鼠标的捕获](#-72-键盘和鼠标的捕获)
+- [1. 入门](#1-入门)
+  - [1.1. 入门示例](#11-入门示例)
+  - [1.2. 基本概念](#12-基本概念)
+  - [1.3. 窗口的运行类型](#13-窗口的运行类型)
+- [2. 详解: 窗口 (Window)](#2-详解-窗口-window)
+  - [2.1. class: Window](#21-class-window)
+  - [2.2. 创建窗口](#22-创建窗口)
+  - [2.3. 多线程支持](#23-多线程支持)
+  - [2.4. 其他](#24-其他)
+- [3. 详解: 事件与事件循环](#3-详解-事件与事件循环)
+  - [3.1. 事件](#31-事件)
+    - [3.1.1. 窗口事件](#311-窗口事件)
+    - [3.1.2. 按钮事件](#312-按钮事件)
+    - [3.1.3. Element 事件](#313-element-事件)
+  - [3.2. 事件循环](#32-事件循环)
+    - [3.2.1. 事件处理](#321-事件处理)
+    - [3.2.2. 事件循环与多线程](#322-事件循环与多线程)
+- [4. 详解: 布局与容器](#4-详解-布局与容器)
+  - [4.1. 布局](#41-布局)
+  - [4.2. 布局相关容器或函数](#42-布局相关容器或函数)
+- [5. 详解: Widget](#5-详解-widget)
+  - [5.1. 基本组件](#51-基本组件)
+  - [5.2. 组件操作](#52-组件操作)
+    - [5.2.1. key](#521-key)
+    - [5.2.2. 组件的通用属性和方法](#522-组件的通用属性和方法)
+    - [5.2.3. 组件样式](#523-组件样式)
+  - [5.3. 标题, 菜单, 状态栏](#53-标题-菜单-状态栏)
+    - [5.3.1. 标题](#531-标题)
+    - [5.3.2. 菜单](#532-菜单)
+    - [5.3.3. 状态栏](#533-状态栏)
+  - [5.4. 按钮](#54-按钮)
+  - [5.5. 输入类控件](#55-输入类控件)
+  - [5.6. 显示类控件](#56-显示类控件)
+  - [5.7. 表格/树状](#57-表格树状)
+  - [5.8. 画布](#58-画布)
+  - [5.9. 弹出窗口](#59-弹出窗口)
+  - [5.10. 系统托盘](#510-系统托盘)
+  - [5.11. 其他控件](#511-其他控件)
+  - [5.12. 打印调试信息](#512-打印调试信息)
+- [6. 设置、定制、美化](#6-设置-定制-美化)
+  - [6.1. 通用方法](#61-通用方法)
+  - [6.2. 主题、颜色、字体](#62-主题-颜色-字体)
+  - [6.3. 图标](#63-图标)
+  - [6.4. 窗口](#64-窗口)
+  - [6.5. 控件尺寸](#65-控件尺寸)
+- [7. 鼠标和键盘](#7-鼠标和键盘)
+  - [7.1. 鼠标](#71-鼠标)
+  - [7.2. 键盘和鼠标的捕获](#72-键盘和鼠标的捕获)
 
 <!-- /code_chunk_output -->
+
+--------------------------------------------------------------------------------
+tips:
+* ==多看示例==
+* 参见 [官方文档](https://pysimplegui.readthedocs.io/)
 
 --------------------------------------------------------------------------------
 # 1. 入门
@@ -258,20 +258,20 @@ window.close()
 
 ## 3.1. 事件
 * 事件类型
-    分类        | 事件
-    :---------: | :--------------------
-    所有窗口    | 关闭窗口
-    ^           | 点击按钮
-    Element 事件| 键盘
-    ^           | 鼠标滚轮
-    ^           | 菜单
-    ^           | 控件改变 (slider, spinner, etc)
-    ^           | 点击列表控件的某项
-    ^           | 输入控件的回车键
-    ^           | 超时
-    ^           | 文字被选中
-    ^           | Combobox 被选中
-    ^           | ...
+    |     分类     | 事件                            |
+    | :----------: | :------------------------------ |
+    |   所有窗口   | 关闭窗口                        |
+    |      ^       | 点击按钮                        |
+    | Element 事件 | 键盘                            |
+    |      ^       | 鼠标滚轮                        |
+    |      ^       | 菜单                            |
+    |      ^       | 控件改变 (slider, spinner, etc) |
+    |      ^       | 点击列表控件的某项              |
+    |      ^       | 输入控件的回车键                |
+    |      ^       | 超时                            |
+    |      ^       | 文字被选中                      |
+    |      ^       | Combobox 被选中                 |
+    |      ^       | ...                             |
 
     注意: 不是所有的控件都默认启动了事件, 如需使用, 创建控件时需设置 `enable_events=True`
 
@@ -379,54 +379,54 @@ window.close()
 
 ## 4.2. 布局相关容器或函数
 * 容器
-    容器或控件      | 别名                  | tkinter 组件          | 描述
-    :-------------- | :-------------------- | :-------------------- | :---------------
-    `Column`        | `Col`                 | Combination Canvas & Frame  | 嵌入式布局
-    `Pane`          | -                     | tk.PanedWindow        | 可滑动的列
-    `Frame`         | `Fr`                  | tk.LabelFrame         | 框
-    `Tab`           | -                     | tk.Frame              | 页
-    `TabGroup`      | -                     | ttk.Notebook          | 页组
-    `HorizontalSeparator`| `HSep`/`HSeparator`  | ttk.Separator     | 横线
-    `VerticalSeparator`  | `VSeparator`/`VSep`  | ttk.Separator     | 竖线, 用于分隔 `Column`, 和 `Column` 等高
+    | 容器或控件            | 别名                | tkinter 组件               | 描述                                      |
+    | :-------------------- | :------------------ | :------------------------- | :---------------------------------------- |
+    | `Column`              | `Col`               | Combination Canvas & Frame | 嵌入式布局                                |
+    | `Pane`                | -                   | tk.PanedWindow             | 可滑动的列                                |
+    | `Frame`               | `Fr`                | tk.LabelFrame              | 框                                        |
+    | `Tab`                 | -                   | tk.Frame                   | 页                                        |
+    | `TabGroup`            | -                   | ttk.Notebook               | 页组                                      |
+    | `HorizontalSeparator` | `HSep`/`HSeparator` | ttk.Separator              | 横线                                      |
+    | `VerticalSeparator`   | `VSeparator`/`VSep` | ttk.Separator              | 竖线, 用于分隔 `Column`, 和 `Column` 等高 |
 * 函数
-    布局函数    | 说明
-    :---------- | :---
-    `Sizer`     | 用于占位 (特殊的 `Column`)
-    `pin`       | 固定位置 (特殊的 `Column`)
-    `vtop`      | 顶端居中对齐 (特殊的 `Column`)
-    `vbottom`   | 底部居中对齐 (特殊的 `Column`)
-    `vcenter`   | 中心居中对齐 (特殊的 `Column`)
+    | 布局函数  | 说明                           |
+    | :-------- | :----------------------------- |
+    | `Sizer`   | 用于占位 (特殊的 `Column`)     |
+    | `pin`     | 固定位置 (特殊的 `Column`)     |
+    | `vtop`    | 顶端居中对齐 (特殊的 `Column`) |
+    | `vbottom` | 底部居中对齐 (特殊的 `Column`) |
+    | `vcenter` | 中心居中对齐 (特殊的 `Column`) |
 
 # 5. 详解: Widget
 
 ## 5.1. 基本组件
-组件            | 别名                  | tkinter 组件          | 描述
-:-------------- | :-------------------- | :-------------------- | :---------------
-`Text`          | `T`/`Txt`             | tk.Label              | 一行或多行文本
-`Input`         | `I`/`In`/`InputText`  | tk.Entry              | 单行输入文本框
-`Combo`         | `DD`/`Drop`/`DropDown`/`InputCombo`| ttk.Combobox | 下拉列表
-`OptionMenu`    | `InputOptionMenu`     | tk.OptionMenu         | 下拉列表
-`Multiline`     | `ML`/`MLine`          | tk.Text or tk.scrolledtext.ScrolledText  | 用于输入或输出的多行文本
-`Radio`         | `R`/`Rad`             | tk.Radiobutton        | 单选
-`Checkbox`      | `CB`/`CBox`/`Check`   | tk.Checkbutton        | 复选框
-`Spin`          | `Sp`                  | tk.Spinbox            | 旋钮
-`Button`        | `B`/`Btn`             | tk.Button or ttk.Button  | 按钮
-`Image`         | `Im`                  | tk.Label              | 图片 (PNG or GIF)
-`Canvas`        | -                     | tk.Canvas             | 画布, 建议选用 `Graph`
-`Graph`         | `G`                   | tk.Canvas             | 画布
-`Slider`        | `Sl`                  | tk.Scale              | 滑动条
-`Listbox`       | `LB`/`LBox`           | tk.Listbox            | 列表框
-`Menu`          | `MenuBar`/`Menubar`   | tk.Menu               | 菜单
-`MenubarCustom` | -                     | Combined Elements     | 自定义菜单
-`ButtonMenu`    | `BM`/`BMenu`          | tk.Menubutton         | 菜单按钮
-`Titlebar`      | -                     | Combined Elements     | 自定义颜色的标题栏
-`ProgressBar`   | `PBar`/`Prog`/`Progress` | ttk.Progressbar    | -
-`Table`         | -                     | ttk.Treeview          | 表
-`Tree`          | -                     | ttk.Treeview          | 树
-`StatusBar`     | `SBar`                | tk.Label              | 状态栏
-`Sizegrip`      | `SGrip`               | ttk.Sizegrip          | 窗口右下角用于调节尺寸的
-`Push`          | `P`/`Stretch`         | PySimpleGUI Elements  | 横线推挤组件
-`VPush`         | `VP`/`VStretch`       | PySimpleGUI Elements  | 纵向推挤组件
+| 组件            | 别名                                | tkinter 组件                            | 描述                     |
+| :-------------- | :---------------------------------- | :-------------------------------------- | :----------------------- |
+| `Text`          | `T`/`Txt`                           | tk.Label                                | 一行或多行文本           |
+| `Input`         | `I`/`In`/`InputText`                | tk.Entry                                | 单行输入文本框           |
+| `Combo`         | `DD`/`Drop`/`DropDown`/`InputCombo` | ttk.Combobox                            | 下拉列表                 |
+| `OptionMenu`    | `InputOptionMenu`                   | tk.OptionMenu                           | 下拉列表                 |
+| `Multiline`     | `ML`/`MLine`                        | tk.Text or tk.scrolledtext.ScrolledText | 用于输入或输出的多行文本 |
+| `Radio`         | `R`/`Rad`                           | tk.Radiobutton                          | 单选                     |
+| `Checkbox`      | `CB`/`CBox`/`Check`                 | tk.Checkbutton                          | 复选框                   |
+| `Spin`          | `Sp`                                | tk.Spinbox                              | 旋钮                     |
+| `Button`        | `B`/`Btn`                           | tk.Button or ttk.Button                 | 按钮                     |
+| `Image`         | `Im`                                | tk.Label                                | 图片 (PNG or GIF)        |
+| `Canvas`        | -                                   | tk.Canvas                               | 画布, 建议选用 `Graph`   |
+| `Graph`         | `G`                                 | tk.Canvas                               | 画布                     |
+| `Slider`        | `Sl`                                | tk.Scale                                | 滑动条                   |
+| `Listbox`       | `LB`/`LBox`                         | tk.Listbox                              | 列表框                   |
+| `Menu`          | `MenuBar`/`Menubar`                 | tk.Menu                                 | 菜单                     |
+| `MenubarCustom` | -                                   | Combined Elements                       | 自定义菜单               |
+| `ButtonMenu`    | `BM`/`BMenu`                        | tk.Menubutton                           | 菜单按钮                 |
+| `Titlebar`      | -                                   | Combined Elements                       | 自定义颜色的标题栏       |
+| `ProgressBar`   | `PBar`/`Prog`/`Progress`            | ttk.Progressbar                         | -                        |
+| `Table`         | -                                   | ttk.Treeview                            | 表                       |
+| `Tree`          | -                                   | ttk.Treeview                            | 树                       |
+| `StatusBar`     | `SBar`                              | tk.Label                                | 状态栏                   |
+| `Sizegrip`      | `SGrip`                             | ttk.Sizegrip                            | 窗口右下角用于调节尺寸的 |
+| `Push`          | `P`/`Stretch`                       | PySimpleGUI Elements                    | 横线推挤组件             |
+| `VPush`         | `VP`/`VStretch`                     | PySimpleGUI Elements                    | 纵向推挤组件             |
 
 ## 5.2. 组件操作
 
@@ -455,16 +455,16 @@ window.close()
 
 ### 5.2.2. 组件的通用属性和方法
 * 属性
-    属性            | 说明
-    :-------------: | :---
-    `key`           | 组件的 key, 类似 ID
-    `tooltip`       | 悬浮提示
-    `size`          | (width, height), 单位一般为字符, 某些组件是像素
-    `font`          | 指定字体, 格式: (family, size, styles)
-    `colors`        | 预定义颜色名称或 #RRGGBB 字符串
-    `pad`           | 元素周围的隔离带宽度, 单位: 像素
-    `enable_events` | 组件特定的事件
-    `visible`       | 是否可见
+    |      属性       | 说明                                            |
+    | :-------------: | :---------------------------------------------- |
+    |      `key`      | 组件的 key, 类似 ID                             |
+    |    `tooltip`    | 悬浮提示                                        |
+    |     `size`      | (width, height), 单位一般为字符, 某些组件是像素 |
+    |     `font`      | 指定字体, 格式: (family, size, styles)          |
+    |    `colors`     | 预定义颜色名称或 #RRGGBB 字符串                 |
+    |      `pad`      | 元素周围的隔离带宽度, 单位: 像素                |
+    | `enable_events` | 组件特定的事件                                  |
+    |    `visible`    | 是否可见                                        |
 * 方法
     * 组件内容更新: `.update(new_value)`, 可进一步简化为 `组件对象(new_value)`, 如
         ```Python
@@ -636,18 +636,18 @@ window.close()
         4. 指定buton_color使得按钮背景与窗口背景一致
 
 ## 6.4. 窗口
-美化项      | 方法
-:---------- | :--------
-取消标题栏  | 创建窗口时设置 `no_titlebar` 参数
-窗口尺寸    | 创建窗口时设置 `size` 参数
-^           | 修改窗口对象的属性: `.size()` (别名: `Size`)
-窗口透明    | 创建窗口时设置 `alpha_channel` 参数
-^           | 修改窗口对象的属性: `.alpha_channel` (别名: `AlphaChannel`)
-^           | 使用窗口对象的方法: `.set_alpha()`
-总是在顶层  | 创建窗口时设置 `keep_on_top` 参数
-^           | 使用窗口对象的方法: `.keep_on_top_set()` 或 `.keep_on_top_clear()`
-抓取窗口    | 创建窗口时设置 `grab_anywhere` 参数
-^           | 使用窗口对象的方法: `.grab_any_where_on()` 或 `.grab_any_where_off()`
+| 美化项     | 方法                                                                  |
+| :--------- | :-------------------------------------------------------------------- |
+| 取消标题栏 | 创建窗口时设置 `no_titlebar` 参数                                     |
+| 窗口尺寸   | 创建窗口时设置 `size` 参数                                            |
+| ^          | 修改窗口对象的属性: `.size()` (别名: `Size`)                          |
+| 窗口透明   | 创建窗口时设置 `alpha_channel` 参数                                   |
+| ^          | 修改窗口对象的属性: `.alpha_channel` (别名: `AlphaChannel`)           |
+| ^          | 使用窗口对象的方法: `.set_alpha()`                                    |
+| 总是在顶层 | 创建窗口时设置 `keep_on_top` 参数                                     |
+| ^          | 使用窗口对象的方法: `.keep_on_top_set()` 或 `.keep_on_top_clear()`    |
+| 抓取窗口   | 创建窗口时设置 `grab_anywhere` 参数                                   |
+| ^          | 使用窗口对象的方法: `.grab_any_where_on()` 或 `.grab_any_where_off()` |
 * 注意:
     * 如果取消标题栏, 一定要创建一个 "退出" 按钮
 

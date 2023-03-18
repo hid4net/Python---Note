@@ -2,24 +2,22 @@
 <h1 style="text-align:center">调用外部程序或DLL</h1>
 
 --------------------------------------------------------------------------------
-[返回目录](outline.md)
+[返回 Outline](outline.md)
 
-tips:
-
---------------------------------------------------------------------------------
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-- [1. 外部程序](#-1-外部程序-)
-  - [1.1. 标准库 os.system(...)](#-11-标准库-ossystem-)
-  - [1.2. 标准库 subprocess.run(...)](#-12-标准库-subprocessrun-)
-- [2. DLL](#-2-dll-)
-  - [2.1. 标准库 ctypes](#-21-标准库-ctypes-)
-    - [2.1.1. 基础](#-211-基础-)
-    - [2.1.2. 数据类型](#-212-数据类型-)
+- [1. 外部程序](#1-外部程序)
+  - [1.1. 标准库 os.system(...)](#11-标准库-ossystem)
+  - [1.2. 标准库 subprocess.run(...)](#12-标准库-subprocessrun)
+- [2. DLL](#2-dll)
+  - [2.1. 标准库 ctypes](#21-标准库-ctypes)
+    - [2.1.1. 基础](#211-基础)
+    - [2.1.2. 数据类型](#212-数据类型)
 
 <!-- /code_chunk_output -->
+
 --------------------------------------------------------------------------------
 # 1. 外部程序
 
@@ -117,23 +115,23 @@ tips:
 * 参数类型
     * 基本类型
         * 支持的类型
-            ctypes_类型     | C 类型                                | Python type
-            :-------------: | :-----------------------------------: | :---------:
-            `c_bool`        | `_Bool`                               | bool
-            `c_char`        | `char`                                | 1-character bytes object
-            `c_wchar`       | `wchar_t`                             | 1-character string
-            `c_byte`/`c_ubyte`      | (`signed`/`unsigned`)`char`   | int
-            `c_short`/`c_ushort`    | (`signed`/`unsigned`)`short`  | ^
-            `c_int`/`c_uint`        | (`signed`/`unsigned`)`int`    | ^
-            `c_long`/`c_ulong`      | (`signed`/`unsigned`)`long`   | ^
-            `c_longlong`/`c_ulonglong`    | (`signed`/`unsigned`)`__int64`/`long long`  | ^
-            `c_size_t`/`c_ssize_t`  | `size_t` / `ssize_t`          | ^
-            `c_float`       | `float`                               | float
-            `c_double`      | `double`                              | ^
-            `c_longdouble`  | `long double`                         | ^
-            `c_char_p`      | `char *` (`\0`结尾)                   | `bytes` 对象或 `None`
-            `c_wchar_p`     | `wchar_t *` (`\0`结尾)                | `str` 对象或 `None`
-            `c_void_p`      | `void *`                              | `int` 或 `None`
+            |        ctypes_类型         |                   C 类型                   |       Python type        |
+            | :------------------------: | :----------------------------------------: | :----------------------: |
+            |          `c_bool`          |                  `_Bool`                   |           bool           |
+            |          `c_char`          |                   `char`                   | 1-character bytes object |
+            |         `c_wchar`          |                 `wchar_t`                  |    1-character string    |
+            |     `c_byte`/`c_ubyte`     |        (`signed`/`unsigned`)`char`         |           int            |
+            |    `c_short`/`c_ushort`    |        (`signed`/`unsigned`)`short`        |            ^             |
+            |      `c_int`/`c_uint`      |         (`signed`/`unsigned`)`int`         |            ^             |
+            |     `c_long`/`c_ulong`     |        (`signed`/`unsigned`)`long`         |            ^             |
+            | `c_longlong`/`c_ulonglong` | (`signed`/`unsigned`)`__int64`/`long long` |            ^             |
+            |   `c_size_t`/`c_ssize_t`   |            `size_t` / `ssize_t`            |            ^             |
+            |         `c_float`          |                  `float`                   |          float           |
+            |         `c_double`         |                  `double`                  |            ^             |
+            |       `c_longdouble`       |               `long double`                |            ^             |
+            |         `c_char_p`         |            `char *` (`\0`结尾)             |  `bytes` 对象或 `None`   |
+            |        `c_wchar_p`         |           `wchar_t *` (`\0`结尾)           |   `str` 对象或 `None`    |
+            |         `c_void_p`         |                  `void *`                  |     `int` 或 `None`      |
         * `ctypes` 类型的使用方法
             * 创建: `ctypes_类型(值)`, 如 `c_int(42)`
             * 获取: `ctypes_类型.value`

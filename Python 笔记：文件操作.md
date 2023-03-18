@@ -2,38 +2,34 @@
 <h1 style="text-align:center">文件操作</h1>
 
 --------------------------------------------------------------------------------
-[返回目录](outline.md)
-
-tips:
-
---------------------------------------------------------------------------------
+[返回 Outline](outline.md)
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-- [1. 路径](#-1-路径-)
-  - [1.1. 路径管理](#-11-路径管理-)
-  - [1.2. 目录管理](#-12-目录管理-)
-  - [1.3. 文件管理](#-13-文件管理-)
-  - [1.4. 信息判断](#-14-信息判断-)
-  - [1.5. 应用实例](#-15-应用实例-)
-    - [1.5.1. pyinstaller 打包 exe 后的路径问题](#-151-pyinstaller-打包-exe-后的路径问题-)
-- [2. 普通文件](#-2-普通文件-)
-- [3. json](#-3-json-)
-- [4. yaml](#-4-yaml-)
-- [5. ini](#-5-ini-)
-- [6. csv](#-6-csv-)
-  - [6.1. 标准库 csv](#-61-标准库-csv-)
-  - [6.2. 第三方库 numpy](#-62-第三方库-numpy-)
-  - [6.3. 第三方库 pandas](#-63-第三方库-pandas-)
-- [7. excel 文件](#-7-excel-文件-)
-  - [7.1. 第三方库 openpyxl](#-71-第三方库-openpyxl-)
-  - [7.2. 第三方库 xlrd/xlwt/xlutils](#-72-第三方库-xlrdxlwtxlutils-)
-  - [7.3. 第三方库 numpy, pandas](#-73-第三方库-numpy-pandas-)
-- [8. 自动生产文档](#-8-自动生产文档-)
-  - [8.1. 标记语法](#-81-标记语法-)
-  - [8.2. API](#-82-api-)
+- [1. 路径](#1-路径)
+  - [1.1. 路径管理](#11-路径管理)
+  - [1.2. 目录管理](#12-目录管理)
+  - [1.3. 文件管理](#13-文件管理)
+  - [1.4. 信息判断](#14-信息判断)
+  - [1.5. 应用实例](#15-应用实例)
+    - [1.5.1. pyinstaller 打包 exe 后的路径问题](#151-pyinstaller-打包-exe-后的路径问题)
+- [2. 普通文件](#2-普通文件)
+- [3. json](#3-json)
+- [4. yaml](#4-yaml)
+- [5. ini](#5-ini)
+- [6. csv](#6-csv)
+  - [6.1. 标准库 csv](#61-标准库-csv)
+  - [6.2. 第三方库 numpy](#62-第三方库-numpy)
+  - [6.3. 第三方库 pandas](#63-第三方库-pandas)
+- [7. excel 文件](#7-excel-文件)
+  - [7.1. 第三方库 openpyxl](#71-第三方库-openpyxl)
+  - [7.2. 第三方库 xlrd/xlwt/xlutils](#72-第三方库-xlrdxlwtxlutils)
+  - [7.3. 第三方库 numpy, pandas](#73-第三方库-numpy-pandas)
+- [8. 自动生产文档](#8-自动生产文档)
+  - [8.1. 标记语法](#81-标记语法)
+  - [8.2. API](#82-api)
 
 <!-- /code_chunk_output -->
 
@@ -221,15 +217,15 @@ tips:
         * 使用内建函数 `open(..) -> IO_对象`, 需要用户调用 `.close()` 关闭文件
             * `open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)`
                 * mode: 可选, 文件打开模式
-                    模式                   | 描述
-                    :--------------------: | -----------------------------
-                    r                      | 只读, 文件指针在文件头, 默认
-                    w                      | 只写, 若存在, 删除原内容, 从头编辑; 若不存在, 创建
-                    x                      | 若不存在, 创建; 否则, 报错
-                    a                      | 若存在, 追加; 若不存在, 创建
-                    [r\|w\|x\|a] b         | 二进制模式
-                    [r\|w\|x\|a] t         | 文本模式 (默认)
-                    [r\|w\|x\|a] [b\|t]\ + | 读写模式, 若不存在, r+报错, w+和a+则创建文件
+                    |          模式          | 描述                                               |
+                    | :--------------------: | -------------------------------------------------- |
+                    |           r            | 只读, 文件指针在文件头, 默认                       |
+                    |           w            | 只写, 若存在, 删除原内容, 从头编辑; 若不存在, 创建 |
+                    |           x            | 若不存在, 创建; 否则, 报错                         |
+                    |           a            | 若存在, 追加; 若不存在, 创建                       |
+                    |     [r\|w\|x\|a] b     | 二进制模式                                         |
+                    |     [r\|w\|x\|a] t     | 文本模式 (默认)                                    |
+                    | [r\|w\|x\|a] [b\|t]\ + | 读写模式, 若不存在, r+报错, w+和a+则创建文件       |
                 * `buffering`: 设置缓冲区大小
                 * `encoding`: 一般使用 `utf8`
         * 也可以使用 `ptahlib` 中 `Path` 对象的方法 `open` 打开, 需要用户调用 `close` 关闭文件
@@ -279,12 +275,12 @@ tips:
 > 使用标准库 json
 
 * 基本方法
-    src         | dst           | function
-    :---------: | :-----------: | :----
-    json 文件   | 数据          | **json.load**(fp, *, </br> cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
-    json 字符串 | ^             | **json.loads**(s, *, </br> cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
-    数据        | json 字符串   | **json.dumps**(obj, *, </br> skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
-    ^           | json 文件     | **json.dump**(obj, fp, *, </br> skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
+    |     src     |     dst     | function                       |
+    | :---------: | :---------: | :----------------------------- |
+    |  json 文件  |    数据     | **json.load**(fp, *, ...)      |
+    | json 字符串 |      ^      | **json.loads**(s, *, ...)      |
+    |    数据     | json 字符串 | **json.dumps**(obj, *, ...)    |
+    |      ^      |  json 文件  | **json.dump**(obj, fp, *, ...) |
 * 简单示例
     ```Python
     import json
@@ -581,16 +577,16 @@ tips:
         {% endfor %}
         ```
     * 特殊变量
-        变量           | 描述
-        ---------------|-----------------------
-        loop.index     | 当前循环迭代的次数 (从 1 开始)
-        loop.index0    | 当前循环迭代的次数 (从 0 开始)
-        loop.revindex  | 到循环结束需要迭代的次数 (从 1 开始)
-        loop.revindex0 | 到循环结束需要迭代的次数 (从 0 开始)
-        loop.first     | 如果是第一次迭代, 为 True
-        loop.last      | 如果是最后一次迭代, 为 True
-        loop.length    | 序列中的项目数
-        loop.cycle     | 在一串序列间期取值的辅助函数。见下面的解释
+        | 变量           | 描述                                       |
+        | -------------- | ------------------------------------------ |
+        | loop.index     | 当前循环迭代的次数 (从 1 开始)             |
+        | loop.index0    | 当前循环迭代的次数 (从 0 开始)             |
+        | loop.revindex  | 到循环结束需要迭代的次数 (从 1 开始)       |
+        | loop.revindex0 | 到循环结束需要迭代的次数 (从 0 开始)       |
+        | loop.first     | 如果是第一次迭代, 为 True                  |
+        | loop.last      | 如果是最后一次迭代, 为 True                |
+        | loop.length    | 序列中的项目数                             |
+        | loop.cycle     | 在一串序列间期取值的辅助函数。见下面的解释 |
 * **if 分支判断**:
     * 示例1:
         ``` jinja2

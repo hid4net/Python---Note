@@ -2,8 +2,32 @@
 <h1 style="text-align:center">数据科学 - 数据存储</h1>
 
 --------------------------------------------------------------------------------
-[返回目录](outline.md)
+[返回 Outline](outline.md)
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=3 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1. CSV](#1-csv)
+  - [1.1. with Pandas](#11-with-pandas)
+  - [1.2. with Numpy](#12-with-numpy)
+- [2. Excel](#2-excel)
+  - [2.1. with Pandas](#21-with-pandas)
+- [3. HDF5](#3-hdf5)
+  - [3.1. HDF5 数据结构](#31-hdf5-数据结构)
+  - [3.2. with Pandas](#32-with-pandas)
+    - [3.2.1. 基本操作](#321-基本操作)
+    - [3.2.2. HDFStore 对象](#322-hdfstore-对象)
+  - [3.3. h5py (interface with numpy)](#33-h5py-interface-with-numpy)
+    - [3.3.1. 基本操作](#331-基本操作)
+    - [3.3.2. 文件对象](#332-文件对象)
+    - [3.3.3. group对象](#333-group对象)
+    - [3.3.4. dataset对象](#334-dataset对象)
+  - [3.4. pytables](#34-pytables)
+
+<!-- /code_chunk_output -->
+
+--------------------------------------------------------------------------------
 tips:
 * HDF5 存储数据非常快
 * ==HDF5 用于存数据, 而非处理数据, 尽量不要直接操作数据==
@@ -11,31 +35,6 @@ tips:
     * pandas 处理结构体数组比 numpy 更好, 会将相同类型的数据放在一起
     * numpy 存储的数据易读
 * 保存为 excel 或 csv 时, 浮点数的精度会降低
-
---------------------------------------------------------------------------------
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=3 orderedList=false} -->
-
-<!-- code_chunk_output -->
-
-- [1. CSV](#-1-csv-)
-  - [1.1. with Pandas](#-11-with-pandas-)
-  - [1.2. with Numpy](#-12-with-numpy-)
-- [2. Excel](#-2-excel-)
-  - [2.1. with Pandas](#-21-with-pandas-)
-- [3. HDF5](#-3-hdf5-)
-  - [3.1. HDF5 数据结构](#-31-hdf5-数据结构-)
-  - [3.2. with Pandas](#-32-with-pandas-)
-    - [3.2.1. 基本操作](#-321-基本操作-)
-    - [3.2.2. HDFStore 对象](#-322-hdfstore-对象-)
-  - [3.3. h5py (interface with numpy)](#-33-h5py-interface-with-numpy-)
-    - [3.3.1. 基本操作](#-331-基本操作-)
-    - [3.3.2. 文件对象](#-332-文件对象-)
-    - [3.3.3. group对象](#-333-group对象-)
-    - [3.3.4. dataset对象](#-334-dataset对象-)
-  - [3.4. pytables](#-34-pytables-)
-
-<!-- /code_chunk_output -->
 
 --------------------------------------------------------------------------------
 # 1. CSV
@@ -170,44 +169,44 @@ with h5py.File("mytestfile.hdf5", "w") as f:
 `h5py.File()`
 * 打开/创建
 `File(name, mode=None, driver=None, libver=None, userblock_size=None, swmr=False, **kwds) -> object(hdf5的root) -> HDF5 File Object`
-    mode    | 说明
-    --------|-------------------------------------------------
-    r       | Readonly, file must exist
-    r+      | Read/write, file must exist
-    w       | Create file, truncate if exists
-    w- or x | Create file, fail if exists
-    a       | Read/write if exists, create otherwise (default)
+    | mode    | 说明                                             |
+    | ------- | ------------------------------------------------ |
+    | r       | Readonly, file must exist                        |
+    | r+      | Read/write, file must exist                      |
+    | w       | Create file, truncate if exists                  |
+    | w- or x | Create file, fail if exists                      |
+    | a       | Read/write if exists, create otherwise (default) |
 
 * 属性:
-    常用属性 | 说明
-    ---------|-------------------
-    attrs    | 字典方式访问, 可用list()查看
-    driver   | 文件驱动器, 'windows'
-    file     | 文件
-    filename | 文件名
-    id       | ID
-    mode     | 文件打开方式
-    name     | 名称, '/'
-    parent   | 上一级, 根节点'/'
+    | 常用属性 | 说明                         |
+    | -------- | ---------------------------- |
+    | attrs    | 字典方式访问, 可用list()查看 |
+    | driver   | 文件驱动器, 'windows'        |
+    | file     | 文件                         |
+    | filename | 文件名                       |
+    | id       | ID                           |
+    | mode     | 文件打开方式                 |
+    | name     | 名称, '/'                    |
+    | parent   | 上一级, 根节点'/'            |
 
 * 常用方法:
-    分类     | 方法                                         | 说明
-    ---------|----------------------------------------------|------------------------
-    文件操作 | flush()                                      | 冲刷
-    ^        | close()                                      | 关闭文件
-    数据操作 | clear()                                      | 清空数据
-    ^        | copy(..)                                     | 复制对象或组
-    ^        | create_group(name, ...)                      | 创建组
-    ^        | create_dataset(name, ...)                    | 创建数据集
-    ^        | create_dataset_like(name, other, **kwupdate) | 创建数据集, 和目标对象相似
-    ^        | create_virtual_dataset(name, layout, ...)    | 创建数据集 (虚拟)
-    ^        | get(name, ...)                               | 访问数据
-    ^        | items()                                      | 所有成员
-    ^        | keys()                                       | 所有key
-    ^        | move(source, dest)                           | 移动或重命名
-    ^        | pop(k[,d]) -> v                              | 删除key, 并返回值
-    ^        | popitem() -> (k, v)                          | 删除, 并返回一对儿 (key, value)
-    ^        | update([E, ]**F) -> None                     | 更新
+    | 分类     | 方法                                         | 说明                            |
+    | -------- | -------------------------------------------- | ------------------------------- |
+    | 文件操作 | flush()                                      | 冲刷                            |
+    | ^        | close()                                      | 关闭文件                        |
+    | 数据操作 | clear()                                      | 清空数据                        |
+    | ^        | copy(..)                                     | 复制对象或组                    |
+    | ^        | create_group(name, ...)                      | 创建组                          |
+    | ^        | create_dataset(name, ...)                    | 创建数据集                      |
+    | ^        | create_dataset_like(name, other, **kwupdate) | 创建数据集, 和目标对象相似      |
+    | ^        | create_virtual_dataset(name, layout, ...)    | 创建数据集 (虚拟)               |
+    | ^        | get(name, ...)                               | 访问数据                        |
+    | ^        | items()                                      | 所有成员                        |
+    | ^        | keys()                                       | 所有key                         |
+    | ^        | move(source, dest)                           | 移动或重命名                    |
+    | ^        | pop(k[,d]) -> v                              | 删除key, 并返回值               |
+    | ^        | popitem() -> (k, v)                          | 删除, 并返回一对儿 (key, value) |
+    | ^        | update([E, ]**F) -> None                     | 更新                            |
 
 ### 3.3.3. group对象
 * 列举: `.name`, `.keys()`
@@ -220,21 +219,21 @@ with h5py.File("mytestfile.hdf5", "w") as f:
 
 ### 3.3.4. dataset对象
 * 属性
-    分类     | 属性                                 | 说明
-    ---------|--------------------------------------|--------------------------
-    基本     | attrs, file, id, name, parent        | -
-    数据信息 | chunks                               | (Tuple), 建议10 KiB ~ 1 MiB
-    ^        | dims                                 | 维度
-    ^        | dtype                                | 数据类型, 和numpy相同
-    ^        | maxshape                             | 最大形状
-    ^        | ndim                                 | 维度
-    ^        | shape                                | 形状
-    ^        | size                                 | 内存尺寸
-    ^        | value                                | 值
-    ^        | fillvalue                            | 填充值
-    数据操作 | flush                                | 冲刷, SWMR (单写多读) 属性的一部分
-    ^        | refresh                              | 刷新
-    压缩     | compression/compression_opts/shuffle | -
+    | 分类     | 属性                                 | 说明                               |
+    | -------- | ------------------------------------ | ---------------------------------- |
+    | 基本     | attrs, file, id, name, parent        | -                                  |
+    | 数据信息 | chunks                               | (Tuple), 建议10 KiB ~ 1 MiB        |
+    | ^        | dims                                 | 维度                               |
+    | ^        | dtype                                | 数据类型, 和numpy相同              |
+    | ^        | maxshape                             | 最大形状                           |
+    | ^        | ndim                                 | 维度                               |
+    | ^        | shape                                | 形状                               |
+    | ^        | size                                 | 内存尺寸                           |
+    | ^        | value                                | 值                                 |
+    | ^        | fillvalue                            | 填充值                             |
+    | 数据操作 | flush                                | 冲刷, SWMR (单写多读) 属性的一部分 |
+    | ^        | refresh                              | 刷新                               |
+    | 压缩     | compression/compression_opts/shuffle | -                                  |
 
 * 创建: `create_dataset(name, shape=None, dtype=None, data=None, **kwds) -> 数据`
 * 读写数据

@@ -2,8 +2,105 @@
 <h1 style="text-align:center">数据科学 - 数据处理</h1>
 
 --------------------------------------------------------------------------------
-[返回目录](outline.md)
+[返回 Outline](outline.md)
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=3 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [1. 标准数学库](#1-标准数学库)
+  - [1.1. 内建数学](#11-内建数学)
+  - [1.2. 标准库 math: 基本数学](#12-标准库-math-基本数学)
+  - [1.4. 标准库 decimal: 小数](#14-标准库-decimal-小数)
+  - [1.5. 标准库 fractions: 分数](#15-标准库-fractions-分数)
+  - [1.3. 标准库 random: 随机数](#13-标准库-random-随机数)
+  - [1.6. 标准库 statistics: 统计](#16-标准库-statistics-统计)
+  - [1.7. 标准库 cmath: 复数](#17-标准库-cmath-复数)
+- [2. numpy](#2-numpy)
+  - [2.1. 基础](#21-基础)
+    - [2.1.1. N-dimensional array (ndarray)](#211-n-dimensional-array-ndarray)
+    - [2.1.2. 数据类型](#212-数据类型)
+    - [2.1.3. 索引](#213-索引)
+    - [2.1.4. 迭代](#214-迭代)
+    - [2.1.5. 标准子类](#215-标准子类)
+    - [2.1.6. 日期时间和间隔](#216-日期时间和间隔)
+  - [2.2. array 操作基础](#22-array-操作基础)
+    - [2.2.1. 原则: 副本与视图](#221-原则-副本与视图)
+    - [2.2.2. 原则: 广播](#222-原则-广播)
+    - [2.2.3. 修改 array](#223-修改-array)
+    - [2.2.4. ufunc](#224-ufunc)
+    - [2.2.5. 函数编程](#225-函数编程)
+  - [2.3. 常数](#23-常数)
+  - [2.4. Numpy基本函数](#24-numpy基本函数)
+    - [2.4.1. Numpy 帮助函数](#241-numpy-帮助函数)
+    - [2.4.2. 排序与查找](#242-排序与查找)
+    - [2.4.3. 二进制](#243-二进制)
+    - [2.4.4. string](#244-string)
+  - [2.5. array 数学运算](#25-array-数学运算)
+    - [2.5.1. 数学函数](#251-数学函数)
+    - [2.5.2. 随机数(numpy.random)](#252-随机数numpyrandom)
+    - [2.5.3. 矩阵(numpy.matlib)](#253-矩阵numpymatlib)
+    - [2.5.4. 线性代数(numpy.linalg 和 numpy.dual)](#254-线性代数numpylinalg-和-numpydual)
+    - [2.5.5. 统计](#255-统计)
+    - [2.5.6. 集合](#256-集合)
+    - [2.5.7. 逻辑判断](#257-逻辑判断)
+    - [2.5.8. FFT](#258-fft)
+    - [2.5.9. 窗函数](#259-窗函数)
+    - [2.5.10. 多项式](#2510-多项式)
+    - [2.5.11. 金融](#2511-金融)
+    - [2.5.12. 浮点数错误处理](#2512-浮点数错误处理)
+    - [2.5.13. 其他](#2513-其他)
+  - [2.6. 输入输出](#26-输入输出)
+  - [2.7. C 语言接口](#27-c-语言接口)
+- [3. pandas](#3-pandas)
+  - [3.1. 数据结构](#31-数据结构)
+    - [3.1.1. Series](#311-series)
+    - [3.1.2. DataFrame](#312-dataframe)
+  - [3.2. 数据的创建](#32-数据的创建)
+  - [3.3. 数据类型](#33-数据类型)
+    - [3.3.1. 有效的数据类型](#331-有效的数据类型)
+    - [3.3.2. 查看数据类型](#332-查看数据类型)
+    - [3.3.3. 更改数据类型](#333-更改数据类型)
+    - [3.3.4. 其他](#334-其他)
+  - [3.4. 索引](#34-索引)
+    - [3.4.1. 有效的索引类型](#341-有效的索引类型)
+    - [3.4.2. 查看索引](#342-查看索引)
+    - [3.4.3. 索引方法](#343-索引方法)
+    - [3.4.4. 重设索引](#344-重设索引)
+    - [3.4.5. 多级索引](#345-多级索引)
+    - [3.4.6. 索引重命名](#346-索引重命名)
+  - [3.5. 基本数据操作](#35-基本数据操作)
+    - [3.5.1. 原则: 对齐与扩展](#351-原则-对齐与扩展)
+    - [3.5.2. 原则: missing data](#352-原则-missing-data)
+    - [3.5.3. 数据访问](#353-数据访问)
+    - [3.5.4. 迭代](#354-迭代)
+    - [3.5.5. 数据信息](#355-数据信息)
+    - [3.5.6. 表操作](#356-表操作)
+    - [3.5.7. 元素操作](#357-元素操作)
+    - [3.5.8. 排序](#358-排序)
+    - [3.5.9. 转换](#359-转换)
+  - [3.6. 高级数据操作](#36-高级数据操作)
+    - [3.6.1. 计算](#361-计算)
+    - [3.6.2. 逻辑、关系判断](#362-逻辑-关系判断)
+    - [3.6.3. 统计](#363-统计)
+    - [3.6.4. 集合](#364-集合)
+    - [3.6.5. Split-Apply-Combine (SAC)](#365-split-apply-combine-sac)
+    - [3.6.6. 函数映射](#366-函数映射)
+    - [3.6.7. 数据透视表](#367-数据透视表)
+    - [3.6.8. window](#368-window)
+    - [3.6.9. 日期时间](#369-日期时间)
+    - [3.6.10. 字符串处理](#3610-字符串处理)
+  - [3.7. 可视化](#37-可视化)
+  - [3.8. 输入输出](#38-输入输出)
+  - [3.9. options](#39-options)
+- [4. scipy](#4-scipy)
+  - [4.1. optimize](#41-optimize)
+    - [4.1.1. 最小二乘法拟合](#411-最小二乘法拟合)
+    - [4.1.2. Curve Fitting](#412-curve-fitting)
+
+<!-- /code_chunk_output -->
+
+--------------------------------------------------------------------------------
 tips:
 * **numpy**: 多维数组, 封装多维同质数据类型
 * **pandas**: 类似 excel
@@ -11,104 +108,6 @@ tips:
 * ==不要随意改动 numpy, pandas数据对象的尺寸, 包括拼接、裁剪、添加、删除等==
 * ==不要随意扩大 numpy的维度==
 * hdf5存储数据非常快
-
---------------------------------------------------------------------------------
-
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=3 orderedList=false} -->
-
-<!-- code_chunk_output -->
-
-- [1. 标准数学库](#-1-标准数学库-)
-  - [1.1. 内建数学](#-11-内建数学-)
-  - [1.2. 标准库 math: 基本数学](#-12-标准库-math-基本数学-)
-  - [1.4. 标准库 decimal: 小数](#-14-标准库-decimal-小数-)
-  - [1.5. 标准库 fractions: 分数](#-15-标准库-fractions-分数-)
-  - [1.3. 标准库 random: 随机数](#-13-标准库-random-随机数-)
-  - [1.6. 标准库 statistics: 统计](#-16-标准库-statistics-统计-)
-  - [1.7. 标准库 cmath: 复数](#-17-标准库-cmath-复数-)
-- [2. numpy](#-2-numpy-)
-  - [2.1. 基础](#-21-基础-)
-    - [2.1.1. N-dimensional array (ndarray)](#-211-n-dimensional-array-ndarray-)
-    - [2.1.2. 数据类型](#-212-数据类型-)
-    - [2.1.3. 索引](#-213-索引-)
-    - [2.1.4. 迭代](#-214-迭代-)
-    - [2.1.5. 标准子类](#-215-标准子类-)
-    - [2.1.6. 日期时间和间隔](#-216-日期时间和间隔-)
-  - [2.2. array 操作基础](#-22-array-操作基础-)
-    - [2.2.1. 原则: 副本与视图](#-221-原则-副本与视图-)
-    - [2.2.2. 原则: 广播](#-222-原则-广播-)
-    - [2.2.3. 修改 array](#-223-修改-array-)
-    - [2.2.4. ufunc](#-224-ufunc-)
-    - [2.2.5. 函数编程](#-225-函数编程-)
-  - [2.3. 常数](#-23-常数-)
-  - [2.4. Numpy基本函数](#-24-numpy基本函数-)
-    - [2.4.1. Numpy 帮助函数](#-241-numpy-帮助函数-)
-    - [2.4.2. 排序与查找](#-242-排序与查找-)
-    - [2.4.3. 二进制](#-243-二进制-)
-    - [2.4.4. string](#-244-string-)
-  - [2.5. array 数学运算](#-25-array-数学运算-)
-    - [2.5.1. 数学函数](#-251-数学函数-)
-    - [2.5.2. 随机数(numpy.random)](#-252-随机数numpyrandom-)
-    - [2.5.3. 矩阵(numpy.matlib)](#-253-矩阵numpymatlib-)
-    - [2.5.4. 线性代数(numpy.linalg 和 numpy.dual)](#-254-线性代数numpylinalg-和-numpydual-)
-    - [2.5.5. 统计](#-255-统计-)
-    - [2.5.6. 集合](#-256-集合-)
-    - [2.5.7. 逻辑判断](#-257-逻辑判断-)
-    - [2.5.8. FFT](#-258-fft-)
-    - [2.5.9. 窗函数](#-259-窗函数-)
-    - [2.5.10. 多项式](#-2510-多项式-)
-    - [2.5.11. 金融](#-2511-金融-)
-    - [2.5.12. 浮点数错误处理](#-2512-浮点数错误处理-)
-    - [2.5.13. 其他](#-2513-其他-)
-  - [2.6. 输入输出](#-26-输入输出-)
-  - [2.7. C 语言接口](#-27-c-语言接口-)
-- [3. pandas](#-3-pandas-)
-  - [3.1. 数据结构](#-31-数据结构-)
-    - [3.1.1. Series](#-311-series-)
-    - [3.1.2. DataFrame](#-312-dataframe-)
-  - [3.2. 数据的创建](#-32-数据的创建-)
-  - [3.3. 数据类型](#-33-数据类型-)
-    - [3.3.1. 有效的数据类型](#-331-有效的数据类型-)
-    - [3.3.2. 查看数据类型](#-332-查看数据类型-)
-    - [3.3.3. 更改数据类型](#-333-更改数据类型-)
-    - [3.3.4. 其他](#-334-其他-)
-  - [3.4. 索引](#-34-索引-)
-    - [3.4.1. 有效的索引类型](#-341-有效的索引类型-)
-    - [3.4.2. 查看索引](#-342-查看索引-)
-    - [3.4.3. 索引方法](#-343-索引方法-)
-    - [3.4.4. 重设索引](#-344-重设索引-)
-    - [3.4.5. 多级索引](#-345-多级索引-)
-    - [3.4.6. 索引重命名](#-346-索引重命名-)
-  - [3.5. 基本数据操作](#-35-基本数据操作-)
-    - [3.5.1. 原则: 对齐与扩展](#-351-原则-对齐与扩展-)
-    - [3.5.2. 原则: missing data](#-352-原则-missing-data-)
-    - [3.5.3. 数据访问](#-353-数据访问-)
-    - [3.5.4. 迭代](#-354-迭代-)
-    - [3.5.5. 数据信息](#-355-数据信息-)
-    - [3.5.6. 表操作](#-356-表操作-)
-    - [3.5.7. 元素操作](#-357-元素操作-)
-    - [3.5.8. 排序](#-358-排序-)
-    - [3.5.9. 转换](#-359-转换-)
-  - [3.6. 高级数据操作](#-36-高级数据操作-)
-    - [3.6.1. 计算](#-361-计算-)
-    - [3.6.2. 逻辑、关系判断](#-362-逻辑-关系判断-)
-    - [3.6.3. 统计](#-363-统计-)
-    - [3.6.4. 集合](#-364-集合-)
-    - [3.6.5. Split-Apply-Combine (SAC)](#-365-split-apply-combine-sac-)
-    - [3.6.6. 函数映射](#-366-函数映射-)
-    - [3.6.7. 数据透视表](#-367-数据透视表-)
-    - [3.6.8. window](#-368-window-)
-    - [3.6.9. 日期时间](#-369-日期时间-)
-    - [3.6.10. 字符串处理](#-3610-字符串处理-)
-  - [3.7. 可视化](#-37-可视化-)
-  - [3.8. 输入输出](#-38-输入输出-)
-  - [3.9. options](#-39-options-)
-- [4. scipy](#-4-scipy-)
-  - [4.1. optimize](#-41-optimize-)
-    - [4.1.1. 最小二乘法拟合](#-411-最小二乘法拟合-)
-    - [4.1.2. Curve Fitting](#-412-curve-fitting-)
-
-<!-- /code_chunk_output -->
 
 --------------------------------------------------------------------------------
 # 1. 标准数学库
@@ -125,9 +124,9 @@ tips:
 ## 1.2. 标准库 math: 基本数学
 * 常量
     * `inf`, `nan`
-    * `pi`: π = 3.141592…
-    * `tau`: τ = 6.283185…
-    * `e`: e = 2.718281…
+    * `pi`: π = 3.141592...
+    * `tau`: τ = 6.283185...
+    * `e`: e = 2.718281...
 * 数论和表示
     * `fabs(x)`: 绝对值
     * `fsum(iterable)`: 精确的浮点数加法
@@ -285,16 +284,16 @@ tips:
 #### 2.1.1.1. 创建
 * [np.array(object, dtype=None, *, copy=True, order='K', subok=False, ndmin=0, like=None) -> ndarray](https://numpy.org/doc/stable/reference/generated/numpy.array.html)
     * 参数
-        * `object`: array类数据: `list`, 序列, `np.array`, `np.mat`, ……
+        * `object`: array类数据: `list`, 序列, `np.array`, `np.mat`, ...
         * `dtype`: 数据类型, 如果省略, 自动推断数据类型
         * `copy`: `bool`, 是否复制 (尤其是使用 `np.array` 创建时)
         * `order`: `{'K', 'A', 'C', 'F'}`, optional
-            order | no copy   | copy=True
-            ------|-----------|----------------------------------------------------
-            'K'   | unchanged | F & C order preserved, otherwise most similar order
-            'A'   | unchanged | F order if input is F and not C, otherwise C order
-            'C'   | C order   | C order, C语言顺序 (第一维是行, 第二维是列)
-            'F'   | F order   | F order, Fortran语言顺序 (第一维是列, 第二维是行)
+            | order | no copy   | copy=True                                           |
+            | ----- | --------- | --------------------------------------------------- |
+            | 'K'   | unchanged | F & C order preserved, otherwise most similar order |
+            | 'A'   | unchanged | F order if input is F and not C, otherwise C order  |
+            | 'C'   | C order   | C order, C语言顺序 (第一维是行, 第二维是列)         |
+            | 'F'   | F order   | F order, Fortran语言顺序 (第一维是列, 第二维是行)   |
         * `ndmin`: 维度
     * 示例:
         ``` python
@@ -339,114 +338,114 @@ tips:
 #### 2.1.1.2. 属性
 > 详见 [官方文档](https://numpy.org/doc/stable/reference/arrays.ndarray.html#array-attributes)
 
-分类     | 属性     | 说明
-:--------|----------|----------------------
-数据类型 | dtype    | numpy数据类型
-^        | ctypes   | 便于与 ctypes 模块交互
-尺寸     | ndim     | 维度
-^        | shape    | (行数,列数)
-^        | size     | 行数×列数
-内存     | data     | 内存指针
-^        | itemsize | 每个元素的字节数
-^        | strides  | (每行字节数, 每个元素的字节数)
-^        | nbytes   | data的总尺寸
-^        | flags    | 内存信息
-迭代     | flat     | 1维迭代器
-转置     | T        | 转置, 等效于`.transpose()`
-复数     | real     | 实部
-^        | imag     | 虚部
-其他     | base     | -
+| 分类     | 属性     | 说明                           |
+| :------- | -------- | ------------------------------ |
+| 数据类型 | dtype    | numpy数据类型                  |
+| ^        | ctypes   | 便于与 ctypes 模块交互         |
+| 尺寸     | ndim     | 维度                           |
+| ^        | shape    | (行数,列数)                    |
+| ^        | size     | 行数×列数                      |
+| 内存     | data     | 内存指针                       |
+| ^        | itemsize | 每个元素的字节数               |
+| ^        | strides  | (每行字节数, 每个元素的字节数) |
+| ^        | nbytes   | data的总尺寸                   |
+| ^        | flags    | 内存信息                       |
+| 迭代     | flat     | 1维迭代器                      |
+| 转置     | T        | 转置, 等效于`.transpose()`     |
+| 复数     | real     | 实部                           |
+| ^        | imag     | 虚部                           |
+| 其他     | base     | -                              |
 
 #### 2.1.1.3. 方法
 > 详见 [官方文档](https://numpy.org/doc/stable/reference/arrays.ndarray.html#array-methods)
 
-分类 | 方法                                       | 说明
-:----|--------------------------------------------|-----------------------------
-属性 | .astype(dtype[, order, casting, …])        | 以另一种数据格式复制 array
-引用 | .copy([order])                             | 返回一个 copy
-^    | .view([dtype, type])                       | 返回一个 view
-形状 | .reshape(shape[, order])                   | 改变 shape, 返回 copy
-^    | .resize(new_shape[, refcheck])             | 改变 shape, **(in place)**
-^    | .transpose(*axes)                          | 转置
-^    | .swapaxes(axis1, axis2)                    | 交换轴
-^    | .flatten([order])                          | 展平, 返回copy
-^    | .ravel([order])                            | 展平, 返回view
-^    | .squeeze([axis])                           | 降维, 如 \[\[\[0], [1], [2]]] -> [0, 1, 2]
-元素 | .item(*args)                               | 访问元素, 等效于 value = arr[index]
-^    | .itemset(*args)                            | 修改元素, 等效于 arr[index] = value
-^    | .take(indices[, axis, out, mode])          | 索引
-^    | .put(indices, values[, mode])              | 索引并赋值
-^    | .fill(value)                               | 填充, 等效于 arr[...] = value
-^    | .repeat(repeats[, axis])                   | 重复
-选取 | .choose(choices[, out, mode])              | 随机选取
-^    | .nonzero()                                 | 非零元素的索引
-^    | .compress(condition[, axis, out])          | 根据条件筛选
-^    | .diagonal([offset, axis1, axis2])          | 对角线
-数学 | 加减乘除、取余、乘方、移位、比较、逻辑等   | -
-^    | .round([decimals, out])                    | round
-^    | .dot(b, out=None)                          | 点乘, 可用`@`符号表示
-^    | .conjugate/conj()                          | 共轭
-统计 | .max([axis, out, keepdims])                | 最大值
-^    | .argmax([axis, out])                       | 最大值的索引
-^    | .min([axis, out, keepdims])                | 最小值
-^    | .argmin([axis, out])                       | 最小值的索引
-^    | .mean([axis, dtype, out, keepdims])        | 平均值
-^    | .var([axis, dtype, out, ddof, keepdims])   | 方差
-^    | .std([axis, dtype, out, ddof, keepdims])   | 标准差
-^    | .sum([axis, dtype, out, keepdims])         | 和
-^    | .cumsum([axis, dtype, out])                | 累加和
-^    | .prod([axis, dtype, out, keepdims])        | 积
-^    | .cumprod([axis, dtype, out])               | 累乘
-^    | .ptp([axis, out, keepdims])                | 峰峰值
-^    | .clip([min, max, out])                     | 两个阈值之间的值
-^    | .trace([offset, axis1, axis2, dtype, out]) | 对角线的和
-逻辑 | .all([axis, out, keepdims])                | 与
-^    | .any([axis, out, keepdims])                | 或
-排序 | .sort([axis, kind, order])                 | 排序, **in place**
-^    | .argsort([axis, kind, order])              | 排序后的索引
-^    | .partition(kth[, axis, kind, order])       | 分组
-^    | .argpartition(kth[, axis, kind, order])    | 分组后的索引
-^    | .searchsorted(v[, side, sorter])           | 查找
-转换 | .byteswap([inplace])                       | 交换字节顺序
-^    | .newbyteorder(new_order='S')               | 返回新的字节顺序
-^    | .tolist()                                  | 转为 list
-^    | .tostring([order])                         | 转为 bytes, 将被淘汰
-^    | .tobytes([order])                          | 转为 bytes
-^    | .tofile(fid[, sep, format])                | 写入文件
-^    | .dump(file)                                | 存入 pickle
-^    | .dumps()                                   | 用 string 表示 array 的 pickle
-内存 | .setflags([write, align, uic])             | 设置标志
-^    | .getfield(dtype[, offset])                 | 内存数据
-^    | .setfield(val, dtype, offset=0)            | 内存数据
+| 分类 | 方法                                       | 说明                                       |
+| :--- | ------------------------------------------ | ------------------------------------------ |
+| 属性 | .astype(dtype[, order, casting, ...])      | 以另一种数据格式复制 array                 |
+| 引用 | .copy([order])                             | 返回一个 copy                              |
+| ^    | .view([dtype, type])                       | 返回一个 view                              |
+| 形状 | .reshape(shape[, order])                   | 改变 shape, 返回 copy                      |
+| ^    | .resize(new_shape[, refcheck])             | 改变 shape, **(in place)**                 |
+| ^    | .transpose(*axes)                          | 转置                                       |
+| ^    | .swapaxes(axis1, axis2)                    | 交换轴                                     |
+| ^    | .flatten([order])                          | 展平, 返回copy                             |
+| ^    | .ravel([order])                            | 展平, 返回view                             |
+| ^    | .squeeze([axis])                           | 降维, 如 \[\[\[0], [1], [2]]] -> [0, 1, 2] |
+| 元素 | .item(*args)                               | 访问元素, 等效于 value = arr[index]        |
+| ^    | .itemset(*args)                            | 修改元素, 等效于 arr[index] = value        |
+| ^    | .take(indices[, axis, out, mode])          | 索引                                       |
+| ^    | .put(indices, values[, mode])              | 索引并赋值                                 |
+| ^    | .fill(value)                               | 填充, 等效于 arr[...] = value              |
+| ^    | .repeat(repeats[, axis])                   | 重复                                       |
+| 选取 | .choose(choices[, out, mode])              | 随机选取                                   |
+| ^    | .nonzero()                                 | 非零元素的索引                             |
+| ^    | .compress(condition[, axis, out])          | 根据条件筛选                               |
+| ^    | .diagonal([offset, axis1, axis2])          | 对角线                                     |
+| 数学 | 加减乘除、取余、乘方、移位、比较、逻辑等   | -                                          |
+| ^    | .round([decimals, out])                    | round                                      |
+| ^    | .dot(b, out=None)                          | 点乘, 可用`@`符号表示                      |
+| ^    | .conjugate/conj()                          | 共轭                                       |
+| 统计 | .max([axis, out, keepdims])                | 最大值                                     |
+| ^    | .argmax([axis, out])                       | 最大值的索引                               |
+| ^    | .min([axis, out, keepdims])                | 最小值                                     |
+| ^    | .argmin([axis, out])                       | 最小值的索引                               |
+| ^    | .mean([axis, dtype, out, keepdims])        | 平均值                                     |
+| ^    | .var([axis, dtype, out, ddof, keepdims])   | 方差                                       |
+| ^    | .std([axis, dtype, out, ddof, keepdims])   | 标准差                                     |
+| ^    | .sum([axis, dtype, out, keepdims])         | 和                                         |
+| ^    | .cumsum([axis, dtype, out])                | 累加和                                     |
+| ^    | .prod([axis, dtype, out, keepdims])        | 积                                         |
+| ^    | .cumprod([axis, dtype, out])               | 累乘                                       |
+| ^    | .ptp([axis, out, keepdims])                | 峰峰值                                     |
+| ^    | .clip([min, max, out])                     | 两个阈值之间的值                           |
+| ^    | .trace([offset, axis1, axis2, dtype, out]) | 对角线的和                                 |
+| 逻辑 | .all([axis, out, keepdims])                | 与                                         |
+| ^    | .any([axis, out, keepdims])                | 或                                         |
+| 排序 | .sort([axis, kind, order])                 | 排序, **in place**                         |
+| ^    | .argsort([axis, kind, order])              | 排序后的索引                               |
+| ^    | .partition(kth[, axis, kind, order])       | 分组                                       |
+| ^    | .argpartition(kth[, axis, kind, order])    | 分组后的索引                               |
+| ^    | .searchsorted(v[, side, sorter])           | 查找                                       |
+| 转换 | .byteswap([inplace])                       | 交换字节顺序                               |
+| ^    | .newbyteorder(new_order='S')               | 返回新的字节顺序                           |
+| ^    | .tolist()                                  | 转为 list                                  |
+| ^    | .tostring([order])                         | 转为 bytes, 将被淘汰                       |
+| ^    | .tobytes([order])                          | 转为 bytes                                 |
+| ^    | .tofile(fid[, sep, format])                | 写入文件                                   |
+| ^    | .dump(file)                                | 存入 pickle                                |
+| ^    | .dumps()                                   | 用 string 表示 array 的 pickle             |
+| 内存 | .setflags([write, align, uic])             | 设置标志                                   |
+| ^    | .getfield(dtype[, offset])                 | 内存数据                                   |
+| ^    | .setfield(val, dtype, offset=0)            | 内存数据                                   |
 
 ### 2.1.2. 数据类型
 
 #### 2.1.2.1. 预定义数据类型
-分类   | 预定义             | 别名               | 字符代码 | 说明
--------|--------------------|--------------------|----------|-----------------------------
-布尔   | bool_              | bool8              | ?        | python 的 bool
-整型   | int_               | python 的 int, 在 x86_64 平台中是 int64
-^      | byte/ubyte         | int8/uint8         | b/B      | C 的 singed/unsigned char
-^      | short/ushort       | int16/uint16       | h/H      | C 的 singed/unsigned short
-^      | intc/uintc         | int32/uint32       | i/I      | C 的 singed/unsigned int
-^      | int_/uint_         | int64/uint64       | l/L      | python 的 int, C 的 singed/unsigned long
-^      | ^                  | intp/uintp         | -        | C 的 intptr_t
-^      | longlong/ulonglong | -                  | q/Q      | C 的 singed/unsigned longlong
-浮点数 | float_             | python 的 float, 在 x86_64 平台中是 float64
-^      | half               | float16            | e        | 半精度浮点数
-^      | single             | float32            | f        | 单精度浮点数
-^      | double             | float_/float64     | d        | 双精度浮点数
-^      | longdouble         | longfloat/float128 | g        | 四精度浮点数
-复数   | complex_           | python 的 cfloat, 在 x86_64 平台中是 complex128
-^      | csingle            | singlecomplex/complex64           | F | python 的 complex, 双精度复数
-^      | cdouble            | cfloat/complex_/complex128        | D | 单精度复数
-^      | clongdouble        | clongfloat/longcomplex/complex256 | G | 双精度复数
-字符串 | bytes_             | string_            | S        | bytes
-^      | str_               | unicode_           | U        | 字符串
-时间   | datetime64         | -                  | M        | 日期时间
-^      | timedelta64        | -                  | m        | 时间差
-内存   | void               | -                  | V        | buffer
-对象   | object_            | -                  | O        | 对象
+| 分类   | 预定义             | 别名                                            | 字符代码 | 说明                                     |
+| ------ | ------------------ | ----------------------------------------------- | -------- | ---------------------------------------- |
+| 布尔   | bool_              | bool8                                           | ?        | python 的 bool                           |
+| 整型   | int_               | python 的 int, 在 x86_64 平台中是 int64         |
+| ^      | byte/ubyte         | int8/uint8                                      | b/B      | C 的 singed/unsigned char                |
+| ^      | short/ushort       | int16/uint16                                    | h/H      | C 的 singed/unsigned short               |
+| ^      | intc/uintc         | int32/uint32                                    | i/I      | C 的 singed/unsigned int                 |
+| ^      | int_/uint_         | int64/uint64                                    | l/L      | python 的 int, C 的 singed/unsigned long |
+| ^      | ^                  | intp/uintp                                      | -        | C 的 intptr_t                            |
+| ^      | longlong/ulonglong | -                                               | q/Q      | C 的 singed/unsigned longlong            |
+| 浮点数 | float_             | python 的 float, 在 x86_64 平台中是 float64     |
+| ^      | half               | float16                                         | e        | 半精度浮点数                             |
+| ^      | single             | float32                                         | f        | 单精度浮点数                             |
+| ^      | double             | float_/float64                                  | d        | 双精度浮点数                             |
+| ^      | longdouble         | longfloat/float128                              | g        | 四精度浮点数                             |
+| 复数   | complex_           | python 的 cfloat, 在 x86_64 平台中是 complex128 |
+| ^      | csingle            | singlecomplex/complex64                         | F        | python 的 complex, 双精度复数            |
+| ^      | cdouble            | cfloat/complex_/complex128                      | D        | 单精度复数                               |
+| ^      | clongdouble        | clongfloat/longcomplex/complex256               | G        | 双精度复数                               |
+| 字符串 | bytes_             | string_                                         | S        | bytes                                    |
+| ^      | str_               | unicode_                                        | U        | 字符串                                   |
+| 时间   | datetime64         | -                                               | M        | 日期时间                                 |
+| ^      | timedelta64        | -                                               | m        | 时间差                                   |
+| 内存   | void               | -                                               | V        | buffer                                   |
+| 对象   | object_            | -                                               | O        | 对象                                     |
 
 #### 2.1.2.2. 自定义数据类型
 > 详见 [官方文档](https://numpy.org/doc/stable/reference/arrays.dtypes.html)
@@ -458,27 +457,27 @@ tips:
     * 别名的字符串: `'int32'`, `'float64'`, `'complex128'` 等, 可用 `numpy.sctypeDict.keys()` 查询
     * 字符串型: 格式为`'[字节顺序][数组] 类型缩写 [长度]'`
         * 字节顺序:
-            字符 | 含义
-            :---:|-----
-            <    | little endian
-            `>   | big endian
-            =    | native order
-            \|   | ignore (no change to byte order)
+            |  字符  | 含义                             |
+            | :----: | -------------------------------- |
+            |   <    | little endian                    |
+            | &shy;> | big endian                       |
+            |   =    | native order                     |
+            |   \|   | ignore (no change to byte order) |
         * 数组: 用 tuple 表示, 如 `'3u8'` (等效于`'(3,)u8'`),`'(2,3)f8'`
         * 类型缩写:
-            缩写 | 对应类型
-            :---:|---------
-            ?    | boolean
-            b/B  | byte
-            i/u  | integer
-            f    | floating-point
-            c    | complex-floating point
-            M    | datetime
-            m    | timedelta
-            O    | (Python) objects
-            S/a  | zero-terminated bytes (not recommended)
-            U    | Unicode string
-            V    | raw data (void)
+            | 缩写  | 对应类型                                |
+            | :---: | --------------------------------------- |
+            |   ?   | boolean                                 |
+            |  b/B  | byte                                    |
+            |  i/u  | integer                                 |
+            |   f   | floating-point                          |
+            |   c   | complex-floating point                  |
+            |   M   | datetime                                |
+            |   m   | timedelta                               |
+            |   O   | (Python) objects                        |
+            |  S/a  | zero-terminated bytes (not recommended) |
+            |   U   | Unicode string                          |
+            |   V   | raw data (void)                         |
         * 长度:
             * 数字: 如`'<i4'`等效于 np.int32, `'|f8'`等效于 np.float64
             * 字符串: 如`U10`表示长度为10的字符串
@@ -1142,7 +1141,7 @@ tips:
 * 文本文件
     * [np.savetxt(fname, X[, fmt, delimiter, newline, ...])](https://numpy.org/doc/stable/reference/generated/numpy.savetxt.html#numpy.savetxt)
     * [np.loadtxt(fname[, dtype, comments, delimiter, ...])](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html#numpy.loadtxt)
-    * `np.genfromtxt(fname[, dtype, comments, …])`
+    * `np.genfromtxt(fname[, dtype, comments, ...])`
     * `np.fromregex(file, regexp, dtype[, encoding])`
     * `np.fromstring(string[, dtype, count, sep])`
     * `np.ndarray.tofile(fid[, sep, format])`
@@ -1195,26 +1194,26 @@ pandas是一种表格形的数据结构, 详见 [官方文档](http://pandas.pyd
 * 主要属性:
     > 参见 [官方文档](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html)
 
-    分类 | 属性                    | 说明
-    -----|-------------------------|--------------------------
-    索引 | index                   | 索引
-    ^    | axes                    | 所有轴的索引, list(index)
-    ^    | loc / iloc              | 按标签 / 位置索引
-    ^    | at / iat                | 按标签 / 位置索引, 访问单个值
-    结构 | ndim                    | 维数
-    ^    | shape                   | 形状
-    ^    | size                    | 展平后的元素个数
-    数据 | values                  | 所有值, 以 numpy 的 ndarray 表示
-    ^    | array                   | 数据, 以 pandas 的 array 表示
-    ^    | dtype / dtypes          | 数据类型
-    ^    | T                       | 转置
-    内存 | nbytes                  | 内存占用
-    信息 | name                    | 名称
-    ^    | hasnans                 | 有无 NaN
-    ^    | empty                   | 是否为空
-    ^    | is_monotonic_increasing | 是否单调增
-    ^    | is_monotonic_decreasing | 是否单调减
-    ^    | is_unique               | 值是否唯一
+    | 分类 | 属性                    | 说明                             |
+    | ---- | ----------------------- | -------------------------------- |
+    | 索引 | index                   | 索引                             |
+    | ^    | axes                    | 所有轴的索引, list(index)        |
+    | ^    | loc / iloc              | 按标签 / 位置索引                |
+    | ^    | at / iat                | 按标签 / 位置索引, 访问单个值    |
+    | 结构 | ndim                    | 维数                             |
+    | ^    | shape                   | 形状                             |
+    | ^    | size                    | 展平后的元素个数                 |
+    | 数据 | values                  | 所有值, 以 numpy 的 ndarray 表示 |
+    | ^    | array                   | 数据, 以 pandas 的 array 表示    |
+    | ^    | dtype / dtypes          | 数据类型                         |
+    | ^    | T                       | 转置                             |
+    | 内存 | nbytes                  | 内存占用                         |
+    | 信息 | name                    | 名称                             |
+    | ^    | hasnans                 | 有无 NaN                         |
+    | ^    | empty                   | 是否为空                         |
+    | ^    | is_monotonic_increasing | 是否单调增                       |
+    | ^    | is_monotonic_decreasing | 是否单调减                       |
+    | ^    | is_unique               | 值是否唯一                       |
 
 * 方法:
     > 参见 [官方文档](https://pandas.pydata.org/pandas-docs/stable/reference/series.html)
@@ -1242,21 +1241,21 @@ class, 二维数据结构, 类似 excel 表格, 详见 [官方文档](https://pa
 * 主要属性:
     > 参见 [官方文档](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
 
-    分类 | 属性       | 说明
-    -----|------------|----------------
-    索引 | index      | 行索引
-    ^    | columns    | 列索引
-    ^    | axes       | 所有轴的索引 (列表)
-    ^    | loc / iloc | 按标签/位置索引
-    ^    | at / iat   | 按标签/位置索引, 访问单个值
-    结构 | ndim       | 维数
-    ^    | shape      | 形状
-    ^    | size       | 展平后的元素个数
-    数据 | values     | 所有值
-    ^    | dtypes     | 数据类型
-    ^    | T          | 转置
-    信息 | empty      | 是否为空
-    其他 | style      | 风格
+    | 分类 | 属性       | 说明                        |
+    | ---- | ---------- | --------------------------- |
+    | 索引 | index      | 行索引                      |
+    | ^    | columns    | 列索引                      |
+    | ^    | axes       | 所有轴的索引 (列表)         |
+    | ^    | loc / iloc | 按标签/位置索引             |
+    | ^    | at / iat   | 按标签/位置索引, 访问单个值 |
+    | 结构 | ndim       | 维数                        |
+    | ^    | shape      | 形状                        |
+    | ^    | size       | 展平后的元素个数            |
+    | 数据 | values     | 所有值                      |
+    | ^    | dtypes     | 数据类型                    |
+    | ^    | T          | 转置                        |
+    | 信息 | empty      | 是否为空                    |
+    | 其他 | style      | 风格                        |
 
 * 方法:
     > 参见 [官方文档](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html)
@@ -1275,16 +1274,16 @@ class, 二维数据结构, 类似 excel 表格, 详见 [官方文档](https://pa
 > 参见 [官方文档](https://pandas.pydata.org/pandas-docs/stable/user_guide/basics.html#dtypes)
 * 基本类型: numpy 的数据类型, 包括: `float`, `int`, `bool`, `timedelta64[ns]`, `datetime64[ns]`
 * 扩展类型:
-    数据类别            | 数据类型         | 标量      | 阵列                 | 字符串别名
-    :------------------:|:----------------:|:---------:|:--------------------:|:---------------------:
-    tz-aware datetime   | DatetimeTZDtype  | Timestamp | arrays.DatetimeArray | 'datetime64[ns, \<tz>]'
-    Categorical         | CategoricalDtype | (none)    | Categorical          | 'category'
-    period (time spans) | PeriodDtype      | Period    | arrays.PeriodArray   | 'period[<freq>]', 'Period[<freq>]'
-    sparse              | SparseDtype      | (none)    | arrays.SparseArray   | 'Sparse', 'Sparse[int]', 'Sparse[float]'
-    intervals           | IntervalDtype    | Interval  | arrays.IntervalArray | 'interval', 'Interval', 'Interval[<numpy_dtype>]', 'Interval[datetime64[ns, \<tz>]]', 'Interval[timedelta64[<freq>]]'
-    nullable integer    | Int64Dtype, ...  | (none)    | arrays.IntegerArray  | 'Int8', 'Int16', 'Int32', 'Int64', 'UInt8', 'UInt16', 'UInt32', 'UInt64'
-    Strings             | StringDtype      | str       | arrays.StringArray   | 'string'
-    Boolean (with NA)   | BooleanDtype     | bool      | arrays.BooleanArray  | 'boolean'
+    |      数据类别       |     数据类型     |   标量    |         阵列         |                                                      字符串别名                                                       |
+    | :-----------------: | :--------------: | :-------: | :------------------: | :-------------------------------------------------------------------------------------------------------------------: |
+    |  tz-aware datetime  | DatetimeTZDtype  | Timestamp | arrays.DatetimeArray |                                                'datetime64[ns, \<tz>]'                                                |
+    |     Categorical     | CategoricalDtype |  (none)   |     Categorical      |                                                      'category'                                                       |
+    | period (time spans) |   PeriodDtype    |  Period   |  arrays.PeriodArray  |                                          'period[<freq>]', 'Period[<freq>]'                                           |
+    |       sparse        |   SparseDtype    |  (none)   |  arrays.SparseArray  |                                       'Sparse', 'Sparse[int]', 'Sparse[float]'                                        |
+    |      intervals      |  IntervalDtype   | Interval  | arrays.IntervalArray | 'interval', 'Interval', 'Interval[<numpy_dtype>]', 'Interval[datetime64[ns, \<tz>]]', 'Interval[timedelta64[<freq>]]' |
+    |  nullable integer   | Int64Dtype, ...  |  (none)   | arrays.IntegerArray  |                       'Int8', 'Int16', 'Int32', 'Int64', 'UInt8', 'UInt16', 'UInt32', 'UInt64'                        |
+    |       Strings       |   StringDtype    |    str    |  arrays.StringArray  |                                                       'string'                                                        |
+    |  Boolean (with NA)  |   BooleanDtype   |   bool    | arrays.BooleanArray  |                                                       'boolean'                                                       |
     * pandas 推荐的字符串类型: `StringDtype`
 
 ==注意:==
@@ -1319,25 +1318,25 @@ class, 二维数据结构, 类似 excel 表格, 详见 [官方文档](https://pa
     * 时间: [DatetimeIndex](https://pandas.pydata.org/pandas-docs/stable/reference/indexing.html#datetimeindex), [TimedeltaIndex](https://pandas.pydata.org/pandas-docs/stable/reference/indexing.html#timedeltaindex), [PeriodIndex](https://pandas.pydata.org/pandas-docs/stable/reference/indexing.html#periodindex)
 
 * 索引对象的[主要属性](https://pandas.pydata.org/pandas-docs/stable/reference/indexing.html#properties)
-    类别 | 属性                                 | 说明
-    -----|--------------------------------------|----------------
-    尺寸 | shape                                | 形状
-    ^    | ndim                                 | 维度
-    ^    | size                                 | 尺寸
-    数据 | values                               | 返回array, 内容是索引值
-    ^    | dtype                                | 数据类型
-    ^    | inferred_type                        | 推导类型
-    ^    | T                                    | 转置
-    内存 | nbytes                               | 内存占用
-    信息 | name                                 | 名称
-    ^    | names                                | 名称(字典方式访问)
-    ^    | is_monotonic/is_monotonic_increasing | 单调性
-    ^    | is_monotonic_decreasing              | 单调减
-    ^    | is_unique                            | 是否唯一
-    ^    | has_duplicates                       | 是否重复
-    ^    | hasnans                              | 有无NAN
-    ^    | is_all_dates                         | 是否全是日期
-    ^    | empty                                | 空
+    | 类别 | 属性                                 | 说明                    |
+    | ---- | ------------------------------------ | ----------------------- |
+    | 尺寸 | shape                                | 形状                    |
+    | ^    | ndim                                 | 维度                    |
+    | ^    | size                                 | 尺寸                    |
+    | 数据 | values                               | 返回array, 内容是索引值 |
+    | ^    | dtype                                | 数据类型                |
+    | ^    | inferred_type                        | 推导类型                |
+    | ^    | T                                    | 转置                    |
+    | 内存 | nbytes                               | 内存占用                |
+    | 信息 | name                                 | 名称                    |
+    | ^    | names                                | 名称(字典方式访问)      |
+    | ^    | is_monotonic/is_monotonic_increasing | 单调性                  |
+    | ^    | is_monotonic_decreasing              | 单调减                  |
+    | ^    | is_unique                            | 是否唯一                |
+    | ^    | has_duplicates                       | 是否重复                |
+    | ^    | hasnans                              | 有无NAN                 |
+    | ^    | is_all_dates                         | 是否全是日期            |
+    | ^    | empty                                | 空                      |
 
 * 索引对象的[主要方法](https://pandas.pydata.org/pandas-docs/stable/reference/indexing.html#modifying-and-computations), 与 pd.Series 类似
     * 维护和计算:
@@ -1952,26 +1951,26 @@ class, 二维数据结构, 类似 excel 表格, 详见 [官方文档](https://pa
 # 4. scipy
 > 参见 [官方文档](https://docs.scipy.org/doc/scipy/reference/)
 
-子模块         | 说明
-:--------------|----------------------------------------------------------------------------
-cluster        | [聚类算法](https://docs.scipy.org/doc/scipy/reference/cluster.html)
-constants      | [物理和数学常数](https://docs.scipy.org/doc/scipy/reference/constants.html)
-fftpack        | [快速傅里叶变换](https://docs.scipy.org/doc/scipy/reference/fft.html)
-integrate      | [积分和常微分方程](https://docs.scipy.org/doc/scipy/reference/integrate.html)
-interpolate    | [内插和平滑](https://docs.scipy.org/doc/scipy/reference/interpolate.html)
-io             | [输入和输出](https://docs.scipy.org/doc/scipy/reference/io.html)
-linalg         | [线性代数](https://docs.scipy.org/doc/scipy/reference/linalg.html)
-ndimage        | [N维图像处理](https://docs.scipy.org/doc/scipy/reference/ndimage.html)
-odr            | [正交距离回归](https://docs.scipy.org/doc/scipy/reference/odr.html)
-==optimize==   | [优化和寻根](https://docs.scipy.org/doc/scipy/reference/optimize.html)
-signal         | [信号处理](https://docs.scipy.org/doc/scipy/reference/signal.html)
-sparse         | [稀疏矩阵](https://docs.scipy.org/doc/scipy/reference/sparse.html)
-sparse.linalg  | [稀疏矩阵的线性代数](https://docs.scipy.org/doc/scipy/reference/sparse.linalg.html)
-sparse.csgraph | [稀疏矩阵的图像处理](https://docs.scipy.org/doc/scipy/reference/sparse.csgraph.html)
-spatial        | [空间数据结构和算法](https://docs.scipy.org/doc/scipy/reference/spatial.html)
-special        | [特殊函数](https://docs.scipy.org/doc/scipy/reference/special.html)
-stats          | [统计和分布](https://docs.scipy.org/doc/scipy/reference/stats.html)
-stats.mstats   | [掩码阵列的统计和分布](https://docs.scipy.org/doc/scipy/reference/stats.mstats.html)
+| 子模块         | 说明                                                                                 |
+| :------------- | ------------------------------------------------------------------------------------ |
+| cluster        | [聚类算法](https://docs.scipy.org/doc/scipy/reference/cluster.html)                  |
+| constants      | [物理和数学常数](https://docs.scipy.org/doc/scipy/reference/constants.html)          |
+| fftpack        | [快速傅里叶变换](https://docs.scipy.org/doc/scipy/reference/fft.html)                |
+| integrate      | [积分和常微分方程](https://docs.scipy.org/doc/scipy/reference/integrate.html)        |
+| interpolate    | [内插和平滑](https://docs.scipy.org/doc/scipy/reference/interpolate.html)            |
+| io             | [输入和输出](https://docs.scipy.org/doc/scipy/reference/io.html)                     |
+| linalg         | [线性代数](https://docs.scipy.org/doc/scipy/reference/linalg.html)                   |
+| ndimage        | [N维图像处理](https://docs.scipy.org/doc/scipy/reference/ndimage.html)               |
+| odr            | [正交距离回归](https://docs.scipy.org/doc/scipy/reference/odr.html)                  |
+| ==optimize==   | [优化和寻根](https://docs.scipy.org/doc/scipy/reference/optimize.html)               |
+| signal         | [信号处理](https://docs.scipy.org/doc/scipy/reference/signal.html)                   |
+| sparse         | [稀疏矩阵](https://docs.scipy.org/doc/scipy/reference/sparse.html)                   |
+| sparse.linalg  | [稀疏矩阵的线性代数](https://docs.scipy.org/doc/scipy/reference/sparse.linalg.html)  |
+| sparse.csgraph | [稀疏矩阵的图像处理](https://docs.scipy.org/doc/scipy/reference/sparse.csgraph.html) |
+| spatial        | [空间数据结构和算法](https://docs.scipy.org/doc/scipy/reference/spatial.html)        |
+| special        | [特殊函数](https://docs.scipy.org/doc/scipy/reference/special.html)                  |
+| stats          | [统计和分布](https://docs.scipy.org/doc/scipy/reference/stats.html)                  |
+| stats.mstats   | [掩码阵列的统计和分布](https://docs.scipy.org/doc/scipy/reference/stats.mstats.html) |
 
 ## 4.1. optimize
 
@@ -1981,7 +1980,7 @@ from scipy.optimize import leastsq
 ```
 
 ### 4.1.2. Curve Fitting
-* `curve_fit(f, xdata, ydata[, p0, sigma, …])` 用非线性最小二乘法拟合
+* `curve_fit(f, xdata, ydata[, p0, sigma, ...])` 用非线性最小二乘法拟合
     * 实例
     ``` python {.line-numbers}
     import numpy as np

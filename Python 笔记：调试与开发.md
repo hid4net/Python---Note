@@ -2,48 +2,44 @@
 <h1 style="text-align:center">调试与开发</h1>
 
 --------------------------------------------------------------------------------
-[返回目录](outline.md)
-
-tips:
-
---------------------------------------------------------------------------------
+[返回 Outline](outline.md)
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-- [1. Runtime 信息](#-1-runtime-信息-)
-  - [1.1. 标准库 sys](#-11-标准库-sys-)
-- [2. 日志 (标准库 logging)](#-2-日志-标准库-logging-)
-  - [2.1. 基本](#-21-基本-)
-  - [2.2. 重要: 解决 logger 重复打印的问题](#-22-重要-解决-logger-重复打印的问题-)
-  - [2.3. 面向对象方法](#-23-面向对象方法-)
-    - [2.3.1. 基本流程](#-231-基本流程-)
-    - [2.3.2. 主要的 class](#-232-主要的-class-)
-    - [2.3.3. class: Logger](#-233-class-logger-)
-    - [2.3.4. class: Filterer](#-234-class-filterer-)
-    - [2.3.5. class: Handler](#-235-class-handler-)
-    - [2.3.6. class: Formatter](#-236-class-formatter-)
-  - [2.4. 函数方法](#-24-函数方法-)
-  - [2.5. 高级技巧](#-25-高级技巧-)
-- [3. 运行时间测量](#-3-运行时间测量-)
-  - [3.1. 标准库 time](#-31-标准库-time-)
-  - [3.2. 标准库 timeit](#-32-标准库-timeit-)
-  - [3.3. 使用解释器](#-33-使用解释器-)
-- [4. Profile](#-4-profile-)
-  - [4.1. 标准库 cProfile, profile](#-41-标准库-cprofile-profile-)
-  - [4.2. 第三方库 line_profiler](#-42-第三方库-line_profiler-)
-- [5. numba](#-5-numba-)
-  - [5.1. wrapper](#-51-wrapper-)
-  - [5.2. @jit](#-52-jit-)
-- [6. cython](#-6-cython-)
-- [7. 反汇编](#-7-反汇编-)
-  - [7.1. 标准库 dis](#-71-标准库-dis-)
-- [8. 运行环境](#-8-运行环境-)
-  - [8.1. Virtualenv](#-81-virtualenv-)
-  - [8.2. Virtualenvwrapper](#-82-virtualenvwrapper-)
-- [9. 生成可执行文件](#-9-生成可执行文件-)
-  - [9.1. PyInstaller](#-91-pyinstaller-)
+- [1. Runtime 信息](#1-runtime-信息)
+  - [1.1. 标准库 sys](#11-标准库-sys)
+- [2. 日志 (标准库 logging)](#2-日志-标准库-logging)
+  - [2.1. 基本](#21-基本)
+  - [2.2. 重要: 解决 logger 重复打印的问题](#22-重要-解决-logger-重复打印的问题)
+  - [2.3. 面向对象方法](#23-面向对象方法)
+    - [2.3.1. 基本流程](#231-基本流程)
+    - [2.3.2. 主要的 class](#232-主要的-class)
+    - [2.3.3. class: Logger](#233-class-logger)
+    - [2.3.4. class: Filterer](#234-class-filterer)
+    - [2.3.5. class: Handler](#235-class-handler)
+    - [2.3.6. class: Formatter](#236-class-formatter)
+  - [2.4. 函数方法](#24-函数方法)
+  - [2.5. 高级技巧](#25-高级技巧)
+- [3. 运行时间测量](#3-运行时间测量)
+  - [3.1. 标准库 time](#31-标准库-time)
+  - [3.2. 标准库 timeit](#32-标准库-timeit)
+  - [3.3. 使用解释器](#33-使用解释器)
+- [4. Profile](#4-profile)
+  - [4.1. 标准库 cProfile, profile](#41-标准库-cprofile-profile)
+  - [4.2. 第三方库 line_profiler](#42-第三方库-line_profiler)
+- [5. numba](#5-numba)
+  - [5.1. wrapper](#51-wrapper)
+  - [5.2. @jit](#52-jit)
+- [6. cython](#6-cython)
+- [7. 反汇编](#7-反汇编)
+  - [7.1. 标准库 dis](#71-标准库-dis)
+- [8. 运行环境](#8-运行环境)
+  - [8.1. Virtualenv](#81-virtualenv)
+  - [8.2. Virtualenvwrapper](#82-virtualenvwrapper)
+- [9. 生成可执行文件](#9-生成可执行文件)
+  - [9.1. PyInstaller](#91-pyinstaller)
 
 <!-- /code_chunk_output -->
 
@@ -53,17 +49,17 @@ tips:
 ## 1.1. 标准库 sys
 * `import sys`
 * 访问与 Python 解释器紧密相关的变量和函数, 其中一些重要的函数和变量
-    函数/变量       | 描述
-    :-------------: | :----------------------
-    `argv`          | 命令行参数, 包括脚本名
-    `exit([arg])`   | 退出当前程序, 可通过可选参数指定返回值或错误消息
-    `modules`       | 一个字典, 将模块名映射到加载的模块
-    `path`          | 一个列表, 包含要在其中查找模块的目录的名称
-    `platform`      | 平台标识符, 如 `win32`
-    `stdin`         | 标准输入流
-    `stdout`        | 标准输出流
-    `stderr`        | 标准错误流
-    ...             | ...
+    |   函数/变量   | 描述                                             |
+    | :-----------: | :----------------------------------------------- |
+    |    `argv`     | 命令行参数, 包括脚本名                           |
+    | `exit([arg])` | 退出当前程序, 可通过可选参数指定返回值或错误消息 |
+    |   `modules`   | 一个字典, 将模块名映射到加载的模块               |
+    |    `path`     | 一个列表, 包含要在其中查找模块的目录的名称       |
+    |  `platform`   | 平台标识符, 如 `win32`                           |
+    |    `stdin`    | 标准输入流                                       |
+    |   `stdout`    | 标准输出流                                       |
+    |   `stderr`    | 标准错误流                                       |
+    |      ...      | ...                                              |
 
 --------------------------------------------------------------------------------
 # 2. 日志 (标准库 logging)
@@ -149,16 +145,18 @@ tips:
 ### 2.3.3. class: Logger
 * 构造: `Logger(name, level=0)`
 * 主要方法
-    分类        | 方法
-    :---------: | ----
-    管理 Handler| `addHandler(hdlr)`, `removeHandler(hdlr)`, `hasHandlers()`, ...
-    输出        | `debug(msg, ...)` <br/> `info(msg, ...)` <br/> `warning(msg, ...)` <br/> `error(msg, ...)` ≈ `exception(msg, exc_info=True)`^1^ <br/> `critical(msg, ...)`
-    ^           | `log(level, msg, ...)`
-    ^           | ...
-    级别        | `setLevel(level)`, `isEnabledFor(level)`, ...
-    其他        | ...
-    * 注意:
-        ^1^ 基本等效于 `error(msg, ...)`
+    |     分类     | 方法                                                            |
+    | :----------: | --------------------------------------------------------------- |
+    | 管理 Handler | `addHandler(hdlr)`, `removeHandler(hdlr)`, `hasHandlers()`, ... |
+    |     输出     | `debug(msg, ...)`                                               |
+    |      ^       | `info(msg, ...)`                                                |
+    |      ^       | `warning(msg, ...)`                                             |
+    |      ^       | `error(msg, ...)` ≈ `exception(msg, exc_info=True)`^1^          |
+    |      ^       | `critical(msg, ...)`                                            |
+    |      ^       | `log(level, msg, ...)`                                          |
+    |      ^       | ...                                                             |
+    |     级别     | `setLevel(level)`, `isEnabledFor(level)`, ...                   |
+    |     其他     | ...                                                             |
 * 主要属性: `name`, `level`, `handles`, `disabled`, ...
 
 ### 2.3.4. class: Filterer
@@ -173,13 +171,13 @@ tips:
 * 继承自 `Filterer`
 * 构造: `Handler(level=0)`
 * 主要方法
-    分类        | 方法
-    :---------: | ----
-    设置        | `setLevel(level)`, `set_name(name)`, `get_name()`
-    Formatter   | `setFormatter(fmt)`,
-    控制        | `flush()`, `close()`,
-    多线程锁    | `createLock()`, `acquire()`, `release()`
-    其他        | ...
+    |   分类    | 方法                                              |
+    | :-------: | ------------------------------------------------- |
+    |   设置    | `setLevel(level)`, `set_name(name)`, `get_name()` |
+    | Formatter | `setFormatter(fmt)`,                              |
+    |   控制    | `flush()`, `close()`,                             |
+    | 多线程锁  | `createLock()`, `acquire()`, `release()`          |
+    |   其他    | ...                                               |
 * 主要属性: `level`, `name`, `formatter`, `lock`
 * 子类
     * `StreamHandler`
@@ -194,55 +192,55 @@ tips:
 ### 2.3.6. class: Formatter
 * 构造: `Formatter(fmt=None, datefmt=None, style='%', ...)`
     * `fmt`: 常用的选项
-        基本格式字符串  | 说明
-        :-------------- | :-----------------------
-        %(levelno)s     | 打印日志级别的数值
-        %(levelname)s   | 打印日志级别的名称
-        %(pathname)s    | 打印当前执行程序的路径, 其实就是sys.argv[0]
-        %(filename)s    | 打印当前执行程序名
-        %(funcName)s    | 打印日志的当前函数
-        %(lineno)d      | 打印日志的当前行号
-        %(asctime)s     | 打印日志的时间
-        %(msecs)d       | 打印日志的时间 - 毫秒部分
-        %(thread)d      | 打印线程ID
-        %(threadName)s  | 打印线程名称
-        %(process)d     | 打印进程ID
-        %(processName)s | 打印线程名称
-        %(module)s      | 打印模块名称
-        %(message)s     | 打印日志信息
+        | 基本格式字符串  | 说明                                        |
+        | :-------------- | :------------------------------------------ |
+        | %(levelno)s     | 打印日志级别的数值                          |
+        | %(levelname)s   | 打印日志级别的名称                          |
+        | %(pathname)s    | 打印当前执行程序的路径, 其实就是sys.argv[0] |
+        | %(filename)s    | 打印当前执行程序名                          |
+        | %(funcName)s    | 打印日志的当前函数                          |
+        | %(lineno)d      | 打印日志的当前行号                          |
+        | %(asctime)s     | 打印日志的时间                              |
+        | %(msecs)d       | 打印日志的时间 - 毫秒部分                   |
+        | %(thread)d      | 打印线程ID                                  |
+        | %(threadName)s  | 打印线程名称                                |
+        | %(process)d     | 打印进程ID                                  |
+        | %(processName)s | 打印线程名称                                |
+        | %(module)s      | 打印模块名称                                |
+        | %(message)s     | 打印日志信息                                |
     * `datefmt`: 与内建库 `datetime` 的格式一致
 * 主要方法: ...
 * 主要属性: ...
 
 ## 2.4. 函数方法
-分类    | 函数                      | 说明
-:-----: | :-----------------------: | :---
-Logger  | getLogger(..)             | 默认 Logger 是 `<RootLogger root (WARNING)>`
-输出    | debug(..)                 | 调试信息 (最低级别) , 级别: 10
-^       | info(..)                  | 普通信息, 级别: 20
-^       | warning(..)               | 警告信息, 级别: 30
-^       | error(..) ≈ exception(..) | 错误信息, 级别: 40
-^       | critical(..)              | 严重错误信息 (最高级别) , 级别: 50
-^       | log(..)                   | 通用函数
-配置    | basicConfig(..)           | logging 系统基本配置, 详见^1^
-^       | getLevelName(..)          | 获取级别名称
-^       | addLevelName(..)          | 添加级别名称
-^       | disable(..)               | 禁用某个级别
-^       | shutdown(..)              | 关闭 Logger
-其他    | ...
+|  分类  |           函数            | 说明                                         |
+| :----: | :-----------------------: | :------------------------------------------- |
+| Logger |       getLogger(..)       | 默认 Logger 是 `<RootLogger root (WARNING)>` |
+|  输出  |         debug(..)         | 调试信息 (最低级别) , 级别: 10               |
+|   ^    |         info(..)          | 普通信息, 级别: 20                           |
+|   ^    |        warning(..)        | 警告信息, 级别: 30                           |
+|   ^    | error(..) ≈ exception(..) | 错误信息, 级别: 40                           |
+|   ^    |       critical(..)        | 严重错误信息 (最高级别) , 级别: 50           |
+|   ^    |          log(..)          | 通用函数                                     |
+|  配置  |      basicConfig(..)      | logging 系统基本配置, 详见^1^                |
+|   ^    |     getLevelName(..)      | 获取级别名称                                 |
+|   ^    |     addLevelName(..)      | 添加级别名称                                 |
+|   ^    |        disable(..)        | 禁用某个级别                                 |
+|   ^    |       shutdown(..)        | 关闭 Logger                                  |
+|  其他  |            ...            |
 
 注:
 1. basicConfig
-    参数     | 说明
-    :------: | :---
-    filename | 文件名, 如果没有, 默认创建一个 StreamHandler
-    filemode | 文件模式
-    format   | 格式, 默认格式:  BASIC_FORMAT = '%(levelname)s:%(name)s:%(message)s'
-    datefmt  | 时间格式
-    style    | 风格
-    level    | 级别
-    stream   | 输出流
-    handlers | 函数
+    |   参数   | 说明                                                                 |
+    | :------: | :------------------------------------------------------------------- |
+    | filename | 文件名, 如果没有, 默认创建一个 StreamHandler                         |
+    | filemode | 文件模式                                                             |
+    |  format  | 格式, 默认格式:  BASIC_FORMAT = '%(levelname)s:%(name)s:%(message)s' |
+    | datefmt  | 时间格式                                                             |
+    |  style   | 风格                                                                 |
+    |  level   | 级别                                                                 |
+    |  stream  | 输出流                                                               |
+    | handlers | 函数                                                                 |
 
 ## 2.5. 高级技巧
 * 配置方式

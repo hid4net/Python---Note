@@ -1,7 +1,9 @@
 
-0.1. **Python常用库**
+<h1 style="text-align:center">Python常用库</h1>
+
 --------------------------------------------------------------------------------
-返回 [Python基础](Python%20笔记%EF%BC%9APython%20基础.md)
+[返回 Outline](outline.md)
+[返回 Python基础](Python%20笔记%EF%BC%9APython%20基础.md)
 
 --------------------------------------------------------------------------------
 # 1. 包管理 `pip`
@@ -23,17 +25,17 @@ pip install -U 库名
 
 --------------------------------------------------------------------------------
 # 2. 常用库
-分类       | 库
-:--------- | :--------------------------------------
-代码格式化 | black
-数据科学   | 分析: numpy, pandas^1^, scipy, sympy
-^          | 作图: matplotlib, plotly^2^
-^          | 存储: h5py, openpyxl
-开发       | ipython, jupyterlab, line_profiler^3^
-GUI        | PySimpleGUI
-电子学     | pyserial, crcmod
-虚拟环境   | virtualenv, virtualenvwrapper
-生成 exe   | PyInstaller^4^
+| 分类       | 库                                    |
+| :--------- | :------------------------------------ |
+| 代码格式化 | black                                 |
+| 数据科学   | 分析: numpy, pandas^1^, scipy, sympy  |
+| ^          | 作图: matplotlib, plotly^2^           |
+| ^          | 存储: h5py, openpyxl                  |
+| 开发       | ipython, jupyterlab, line_profiler^3^ |
+| GUI        | PySimpleGUI                           |
+| 电子学     | pyserial, crcmod                      |
+| 虚拟环境   | virtualenv, virtualenvwrapper         |
+| 生成 exe   | PyInstaller^4^                        |
 
 * 注意:
     * ^1^ pandas 读写 HDF5 文件需要安装 `pytables` 库; 读写 excel 文件需要`xlrd, openpyxl`库
@@ -81,28 +83,28 @@ pip install opencv-python
     `%%<命令>`  cell magic, 针对一个cell
     `%magic/%lsmagic/%quickref`   列举magic命令
 * 常用magic
-    分类    | magic                  | 说明
-    :-----: | :--------------------: | :--------------------------------------------------
-    ipython | %paste                 | 粘贴并运行 (在粘贴之前对目标内容进行格式化)
-    ^       | %cpaste                | 粘贴 (在粘贴之前对目标内容进行格式化, 输入 -- 结束)
-    ^       | %hist / %history       | 历史
-    ^       | %who / %who_ls / %whos | 显示所有变量
-    运行    | %run                   | 执行外部程序
-    性能    | %time / %%time         | 计时
-    ^       | %timeit / %%timeit     | 计时
-    ^       | %prun/ %%prun          | 按行统计运行时间
-    ^       | %lprun                 | 按行统计运行时间, 使用 %load_ext line_profiler
-    ^       | %memit                 | 统计内存
-    ^       | %mprun                 | 按行统计运行内存
-    shell   | %cd                    | 切换目录
-    ^       | %ls                    | ls
-    ^       | %ddir / %ldir          | dir
-    ^       | %pwd                   | 当前工作目录
-    ^       | %mkdir                 | 创建目录
-    ^       | %rmdir                 | 创建目录
-    ^       | %cls                   | 清屏
-    ^       | %env                   | 环境变量
-    ^       | %set_env               | 环境变量
+    |  分类   |         magic          | 说明                                                |
+    | :-----: | :--------------------: | :-------------------------------------------------- |
+    | ipython |         %paste         | 粘贴并运行 (在粘贴之前对目标内容进行格式化)         |
+    |    ^    |        %cpaste         | 粘贴 (在粘贴之前对目标内容进行格式化, 输入 -- 结束) |
+    |    ^    |    %hist / %history    | 历史                                                |
+    |    ^    | %who / %who_ls / %whos | 显示所有变量                                        |
+    |  运行   |          %run          | 执行外部程序                                        |
+    |  性能   |     %time / %%time     | 计时                                                |
+    |    ^    |   %timeit / %%timeit   | 计时                                                |
+    |    ^    |     %prun/ %%prun      | 按行统计运行时间                                    |
+    |    ^    |         %lprun         | 按行统计运行时间, 使用 %load_ext line_profiler      |
+    |    ^    |         %memit         | 统计内存                                            |
+    |    ^    |         %mprun         | 按行统计运行内存                                    |
+    |  shell  |          %cd           | 切换目录                                            |
+    |    ^    |          %ls           | ls                                                  |
+    |    ^    |     %ddir / %ldir      | dir                                                 |
+    |    ^    |          %pwd          | 当前工作目录                                        |
+    |    ^    |         %mkdir         | 创建目录                                            |
+    |    ^    |         %rmdir         | 创建目录                                            |
+    |    ^    |          %cls          | 清屏                                                |
+    |    ^    |          %env          | 环境变量                                            |
+    |    ^    |        %set_env        | 环境变量                                            |
 
 --------------------------------------------------------------------------------
 # 4. jupyter-lab

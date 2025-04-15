@@ -58,7 +58,7 @@ pip install -U pyserial crcmod
 pip install -U scipy sympy
 pip install -U virtualenv virtualenvwrapper-win
 pip install -U PyInstaller
-pip install opencv-python
+pip install -U pillow
 ```
 
 --------------------------------------------------------------------------------

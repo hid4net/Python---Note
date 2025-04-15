@@ -199,7 +199,7 @@ struct.calcsize("ic")  # 5
     | ^          | endswith(suffix[, start[, end]]) -> bool   | 是否以xx结尾                                     |
 
 ## 2.5. bytearray
-*构造函数
+* 构造函数
     * **bytesarray**(iterable_of_ints) -> bytes
     * **bytesarray**(string, encoding[, errors]) -> bytes
     * **bytesarray**(bytes_or_buffer) -> immutable copy of bytes_or_buffer
